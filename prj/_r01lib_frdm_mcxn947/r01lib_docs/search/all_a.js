@@ -17,7 +17,8 @@ var searchData=
   ['ledout3_14',['LEDOUT3',['../class_p_c_a9955_b.html#a8d7db2740e4e03122c6e54ca6edfd4b0ae2de6507dff2ab4dc1b58c935037a58b',1,'PCA9955B::LEDOUT3'],['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6a7611d303437e166164bacfcc67298766',1,'PCA9956B::LEDOUT3'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfaff1d33a94149eeb90e23a323b3ea5297',1,'PCA9957::LEDOUT3']]],
   ['ledout4_15',['LEDOUT4',['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6a39b121568850bc47548b1e64051aab46',1,'PCA9956B::LEDOUT4'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfa85dc324249a18e24576ee0081fb3902d',1,'PCA9957::LEDOUT4']]],
   ['ledout5_16',['LEDOUT5',['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6a354a491b5587b3d4c38c6bb272d3069e',1,'PCA9956B::LEDOUT5'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfab2c4cf6856726d20b868c15ef8bd7010',1,'PCA9957::LEDOUT5']]],
-  ['low_17',['low',['../class_p3_t1755.html#a00b3747d04d004e1332903020c57856c',1,'P3T1755::low(float temp)'],['../class_p3_t1755.html#a6947de5b3283da74b5f2f008b064b86b',1,'P3T1755::low(void)']]],
-  ['lpi2c_5fmaster_5fclock_5ffrequency_18',['LPI2C_MASTER_CLOCK_FREQUENCY',['../i2c_8cpp.html#aa2ae34e7e8d10c9d78c288704bec093c',1,'i2c.cpp']]],
-  ['lpspi_5fmaster_5fclk_5ffreq_19',['LPSPI_MASTER_CLK_FREQ',['../spi_8cpp.html#a967c69428e6a7ea82d2bf6d13113c018',1,'spi.cpp']]]
+  ['lm75b_17',['LM75B',['../class_l_m75_b.html',1,'LM75B'],['../class_l_m75_b.html#aa1283b853d8484f85ed8937d9e393ba1',1,'LM75B::LM75B()']]],
+  ['lm75b_2eh_18',['LM75B.h',['../_l_m75_b_8h.html',1,'']]],
+  ['lpi2c_5fmaster_5fclock_5ffrequency_19',['LPI2C_MASTER_CLOCK_FREQUENCY',['../i2c_8cpp.html#aa2ae34e7e8d10c9d78c288704bec093c',1,'i2c.cpp']]],
+  ['lpspi_5fmaster_5fclk_5ffreq_20',['LPSPI_MASTER_CLK_FREQ',['../spi_8cpp.html#a967c69428e6a7ea82d2bf6d13113c018',1,'spi.cpp']]]
 ];

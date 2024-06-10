@@ -75,118 +75,172 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_p3_t1755-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">P3T1755 Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_p3_t1755_8h_source.html">P3T1755.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_temp_sensor_8h_source.html">TempSensor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for P3T1755:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_p3_t1755.png" usemap="#P3T1755_map" alt=""/>
   <map id="P3T1755_map" name="P3T1755_map">
-<area href="class_i3_c___device.html" alt="I3C_Device" shape="rect" coords="0,0,78,24"/>
+<area href="class_l_m75_b.html" alt="LM75B" shape="rect" coords="50,168,140,192"/>
+<area href="class_temp_sensor.html" alt="TempSensor" shape="rect" coords="50,112,140,136"/>
+<area href="class_i2_c__device.html" alt="I2C_device" shape="rect" coords="50,56,140,80"/>
+<area href="class_serial__device.html" alt="Serial_device" shape="rect" coords="50,0,140,24"/>
+<area href="class_p3_t1035.html" alt="P3T1035" shape="rect" coords="0,280,90,304"/>
+<area href="class_p3_t1085.html" alt="P3T1085" shape="rect" coords="100,280,190,304"/>
+<area href="class_p3_t2030.html" alt="P3T2030" shape="rect" coords="0,336,90,360"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae318b12827a065ff514977bda5a2da5c" id="r_ae318b12827a065ff514977bda5a2da5c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae318b12827a065ff514977bda5a2da5c">registers</a> { <a class="el" href="#ae318b12827a065ff514977bda5a2da5cae523e49431893d66f65a3394c12664e8">Temp</a>
-, <a class="el" href="#ae318b12827a065ff514977bda5a2da5ca87db9735a57e2e46d9bfeae70ec174ca">Conf</a>
-, <a class="el" href="#ae318b12827a065ff514977bda5a2da5cae8f8072b8aa1aaa01fcfeb6a1ea43c48">T_LOW</a>
-, <a class="el" href="#ae318b12827a065ff514977bda5a2da5ca99e4a4aa80090aad5cec8b71b3dfb1fd">T_HIGH</a>
+<tr class="memitem:ae8ddf5ef270998685a3b51231e5fcb07" id="r_ae8ddf5ef270998685a3b51231e5fcb07"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07">reg_num</a> { <a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07ae523e49431893d66f65a3394c12664e8">Temp</a>
+, <a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07a87db9735a57e2e46d9bfeae70ec174ca">Conf</a>
+, <a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07ae8f8072b8aa1aaa01fcfeb6a1ea43c48">T_LOW</a>
+, <a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07a99e4a4aa80090aad5cec8b71b3dfb1fd">T_HIGH</a>
  }</td></tr>
-<tr class="separator:ae318b12827a065ff514977bda5a2da5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ae8ddf5ef270998685a3b51231e5fcb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_class_l_m75_b"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_class_l_m75_b')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_l_m75_b.html">LM75B</a></td></tr>
+<tr class="memitem:a290fdcfa4ca52be02034fda0f9c7060c inherit pub_types_class_l_m75_b" id="r_a290fdcfa4ca52be02034fda0f9c7060c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#a290fdcfa4ca52be02034fda0f9c7060c">reg_num</a> { <a class="el" href="class_l_m75_b.html#a290fdcfa4ca52be02034fda0f9c7060ca096df3b2b4853dde8f3aa4ad82dd0e64">Temp</a>
+, <a class="el" href="class_l_m75_b.html#a290fdcfa4ca52be02034fda0f9c7060ca64546183925c84385dbdc0878da9a4f6">Conf</a>
+, <a class="el" href="class_l_m75_b.html#a290fdcfa4ca52be02034fda0f9c7060caf20552b0feba2d987ee90078f0d143e8">Thyst</a>
+, <a class="el" href="class_l_m75_b.html#a290fdcfa4ca52be02034fda0f9c7060cad3710910ee90195f027147ed76db7b35">Tos</a>
+ }</td></tr>
+<tr class="separator:a290fdcfa4ca52be02034fda0f9c7060c inherit pub_types_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_types_class_temp_sensor"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_class_temp_sensor')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_temp_sensor.html">TempSensor</a></td></tr>
+<tr class="memitem:a04ed17a63cb73f086579970c6b7daa69 inherit pub_types_class_temp_sensor" id="r_a04ed17a63cb73f086579970c6b7daa69"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69">mode</a> { <a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69ab4199759877d837f231fb22a03860279">COMPARATOR</a>
+, <a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69a9285a209072a37c7ce5c6dc0530bc72e">INTERRUPT</a>
+ }</td></tr>
+<tr class="separator:a04ed17a63cb73f086579970c6b7daa69 inherit pub_types_class_temp_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c76fb2d6a1daf20f9b5f4c211738b8d" id="r_a8c76fb2d6a1daf20f9b5f4c211738b8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c76fb2d6a1daf20f9b5f4c211738b8d">P3T1755</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;i2c, uint8_t address=<a class="el" href="_p3_t1755_8h.html#ad2ee86f4f2ac54ffacdc4286fe7a40cf">P3T1755_ADDR_I2C</a>)</td></tr>
-<tr class="separator:a8c76fb2d6a1daf20f9b5f4c211738b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad75f6d388a181c90e5893bf3a325f291" id="r_ad75f6d388a181c90e5893bf3a325f291"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad75f6d388a181c90e5893bf3a325f291">~P3T1755</a> ()</td></tr>
+<tr class="memitem:a5a64d6151d3fb56f328a664fe7986bb4" id="r_a5a64d6151d3fb56f328a664fe7986bb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a64d6151d3fb56f328a664fe7986bb4">P3T1755</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;interface, uint8_t i2c_address=(0x98 &gt; &gt; 1))</td></tr>
+<tr class="separator:a5a64d6151d3fb56f328a664fe7986bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75f6d388a181c90e5893bf3a325f291" id="r_ad75f6d388a181c90e5893bf3a325f291"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad75f6d388a181c90e5893bf3a325f291">~P3T1755</a> ()</td></tr>
 <tr class="separator:ad75f6d388a181c90e5893bf3a325f291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a766dba34dff77f07f6c41cca3d452ad7" id="r_a766dba34dff77f07f6c41cca3d452ad7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a766dba34dff77f07f6c41cca3d452ad7">temp</a> (void)</td></tr>
-<tr class="separator:a766dba34dff77f07f6c41cca3d452ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c604198b59416b0227945245384f6e5" id="r_a8c604198b59416b0227945245384f6e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c604198b59416b0227945245384f6e5">conf</a> (uint8_t conf)</td></tr>
-<tr class="separator:a8c604198b59416b0227945245384f6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ff24ab19ddc5c69690d33dc20749c36" id="r_a9ff24ab19ddc5c69690d33dc20749c36"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ff24ab19ddc5c69690d33dc20749c36">conf</a> (void)</td></tr>
-<tr class="separator:a9ff24ab19ddc5c69690d33dc20749c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a238767453d07655409b46b80d9f45168" id="r_a238767453d07655409b46b80d9f45168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a238767453d07655409b46b80d9f45168">high</a> (float <a class="el" href="#a766dba34dff77f07f6c41cca3d452ad7">temp</a>)</td></tr>
-<tr class="separator:a238767453d07655409b46b80d9f45168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95452be0462046e9f9803adea751803c" id="r_a95452be0462046e9f9803adea751803c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95452be0462046e9f9803adea751803c">high</a> (void)</td></tr>
-<tr class="separator:a95452be0462046e9f9803adea751803c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00b3747d04d004e1332903020c57856c" id="r_a00b3747d04d004e1332903020c57856c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00b3747d04d004e1332903020c57856c">low</a> (float <a class="el" href="#a766dba34dff77f07f6c41cca3d452ad7">temp</a>)</td></tr>
-<tr class="separator:a00b3747d04d004e1332903020c57856c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6947de5b3283da74b5f2f008b064b86b" id="r_a6947de5b3283da74b5f2f008b064b86b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6947de5b3283da74b5f2f008b064b86b">low</a> (void)</td></tr>
-<tr class="separator:a6947de5b3283da74b5f2f008b064b86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e94dc85dc7c754150b038471445999e" id="r_a3e94dc85dc7c754150b038471445999e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e94dc85dc7c754150b038471445999e">write</a> (uint8_t reg, float v)</td></tr>
-<tr class="separator:a3e94dc85dc7c754150b038471445999e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07d629e8eaabe50ee530a074a3f99b25" id="r_a07d629e8eaabe50ee530a074a3f99b25"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07d629e8eaabe50ee530a074a3f99b25">read</a> (uint8_t reg)</td></tr>
-<tr class="separator:a07d629e8eaabe50ee530a074a3f99b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee6465d56019afca83380991c754a28d" id="r_aee6465d56019afca83380991c754a28d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee6465d56019afca83380991c754a28d">info</a> (void)</td></tr>
-<tr class="separator:aee6465d56019afca83380991c754a28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af960c6f813e5ba6a457b5fc1790d9988" id="r_af960c6f813e5ba6a457b5fc1790d9988"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af960c6f813e5ba6a457b5fc1790d9988">operator float</a> ()</td></tr>
-<tr class="separator:af960c6f813e5ba6a457b5fc1790d9988"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_i3_c___device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_i3_c___device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i3_c___device.html">I3C_Device</a></td></tr>
-<tr class="memitem:a38a460d104a3ab84f98cb08a3c36d859 inherit pub_methods_class_i3_c___device" id="r_a38a460d104a3ab84f98cb08a3c36d859"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#a38a460d104a3ab84f98cb08a3c36d859">I3C_Device</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;i2c, uint8_t address)</td></tr>
-<tr class="separator:a38a460d104a3ab84f98cb08a3c36d859 inherit pub_methods_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfbd21c9a1dea7344272915fb71f2da7 inherit pub_methods_class_i3_c___device" id="r_abfbd21c9a1dea7344272915fb71f2da7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#abfbd21c9a1dea7344272915fb71f2da7">~I3C_Device</a> ()</td></tr>
-<tr class="separator:abfbd21c9a1dea7344272915fb71f2da7 inherit pub_methods_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2d221fbccd2b79b2ac191663eb018b9 inherit pub_methods_class_i3_c___device" id="r_af2d221fbccd2b79b2ac191663eb018b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#af2d221fbccd2b79b2ac191663eb018b9">address_overwrite</a> (uint8_t address)</td></tr>
-<tr class="separator:af2d221fbccd2b79b2ac191663eb018b9 inherit pub_methods_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e44422f548ccb1aa382460d58420658 inherit pub_methods_class_i3_c___device" id="r_a7e44422f548ccb1aa382460d58420658"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#a7e44422f548ccb1aa382460d58420658">ccc_set</a> (<a class="el" href="i3c_8h.html#acba81d13b8fe4dc120a844ff5fb37321">CCC</a> ccc, uint8_t data)</td></tr>
-<tr class="separator:a7e44422f548ccb1aa382460d58420658 inherit pub_methods_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a536e2b92685bd616163f14090819abcd inherit pub_methods_class_i3_c___device" id="r_a536e2b92685bd616163f14090819abcd"><td class="memItemLeft" align="right" valign="top">virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#a536e2b92685bd616163f14090819abcd">ccc_get</a> (<a class="el" href="i3c_8h.html#acba81d13b8fe4dc120a844ff5fb37321">CCC</a> ccc, uint8_t *dp, uint8_t length)</td></tr>
-<tr class="separator:a536e2b92685bd616163f14090819abcd inherit pub_methods_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac537b7167df81d269c31a1a993998ce0" id="r_ac537b7167df81d269c31a1a993998ce0"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac537b7167df81d269c31a1a993998ce0">short2celsius</a> (int16_t v)</td></tr>
-<tr class="separator:ac537b7167df81d269c31a1a993998ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827868e9a5bbff7432993b1eb896d4f8" id="r_a827868e9a5bbff7432993b1eb896d4f8"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a827868e9a5bbff7432993b1eb896d4f8">celsius2short</a> (float v)</td></tr>
-<tr class="separator:a827868e9a5bbff7432993b1eb896d4f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dfa681b26d56778a008eb7fc225e5d8" id="r_a8dfa681b26d56778a008eb7fc225e5d8"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dfa681b26d56778a008eb7fc225e5d8">swap_bytes</a> (int16_t v)</td></tr>
-<tr class="separator:a8dfa681b26d56778a008eb7fc225e5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd8a3a191398570bd81d2db1b238d663" id="r_afd8a3a191398570bd81d2db1b238d663"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd8a3a191398570bd81d2db1b238d663">thresholds</a> (float v0, float v1) override</td></tr>
+<tr class="separator:afd8a3a191398570bd81d2db1b238d663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab404a5e706067c6f7228e88d4d898d20" id="r_ab404a5e706067c6f7228e88d4d898d20"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab404a5e706067c6f7228e88d4d898d20">temp</a> (void)</td></tr>
+<tr class="separator:ab404a5e706067c6f7228e88d4d898d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a7100ded0005967ea240dc6ff383b6" id="r_ac6a7100ded0005967ea240dc6ff383b6"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6a7100ded0005967ea240dc6ff383b6">read</a> (void)</td></tr>
+<tr class="separator:ac6a7100ded0005967ea240dc6ff383b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1859a4fbc9c01d6876cabf256b9169" id="r_a0d1859a4fbc9c01d6876cabf256b9169"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d1859a4fbc9c01d6876cabf256b9169">os_mode</a> (<a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69">mode</a> flag)</td></tr>
+<tr class="separator:a0d1859a4fbc9c01d6876cabf256b9169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b950013fa928af7d61deb6a56a0f8b3" id="r_a0b950013fa928af7d61deb6a56a0f8b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b950013fa928af7d61deb6a56a0f8b3">write_r8</a> (uint8_t reg, uint8_t val)</td></tr>
+<tr class="separator:a0b950013fa928af7d61deb6a56a0f8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a554bffb9e41a85edddb10c686ba93c4b" id="r_a554bffb9e41a85edddb10c686ba93c4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a554bffb9e41a85edddb10c686ba93c4b">write_r16</a> (uint8_t reg, uint16_t val)</td></tr>
+<tr class="separator:a554bffb9e41a85edddb10c686ba93c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94571e64f9737e86ac064ec3123ea835" id="r_a94571e64f9737e86ac064ec3123ea835"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94571e64f9737e86ac064ec3123ea835">read_r8</a> (uint8_t reg)</td></tr>
+<tr class="separator:a94571e64f9737e86ac064ec3123ea835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e130b030ef68e485f58a17b137c597" id="r_ae2e130b030ef68e485f58a17b137c597"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2e130b030ef68e485f58a17b137c597">read_r16</a> (uint8_t reg)</td></tr>
+<tr class="separator:ae2e130b030ef68e485f58a17b137c597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67013c65d1e649435e6fbc7120dcfbed" id="r_a67013c65d1e649435e6fbc7120dcfbed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67013c65d1e649435e6fbc7120dcfbed">bit_op8</a> (uint8_t reg, uint8_t mask, uint8_t value)</td></tr>
+<tr class="separator:a67013c65d1e649435e6fbc7120dcfbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3059047141c874510c1822b742dd8ac5" id="r_a3059047141c874510c1822b742dd8ac5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3059047141c874510c1822b742dd8ac5">bit_op16</a> (uint8_t reg, uint16_t mask, uint16_t value)</td></tr>
+<tr class="separator:a3059047141c874510c1822b742dd8ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_l_m75_b"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_l_m75_b')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_l_m75_b.html">LM75B</a></td></tr>
+<tr class="memitem:aa1283b853d8484f85ed8937d9e393ba1 inherit pub_methods_class_l_m75_b" id="r_aa1283b853d8484f85ed8937d9e393ba1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#aa1283b853d8484f85ed8937d9e393ba1">LM75B</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;interface, uint8_t i2c_address=(0x90 &gt; &gt; 1))</td></tr>
+<tr class="separator:aa1283b853d8484f85ed8937d9e393ba1 inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a996025b690dde266bcf4ffc856465ee6 inherit pub_methods_class_l_m75_b" id="r_a996025b690dde266bcf4ffc856465ee6"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#a996025b690dde266bcf4ffc856465ee6">~LM75B</a> ()</td></tr>
+<tr class="separator:a996025b690dde266bcf4ffc856465ee6 inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb4b87460545d16d0f6a4bc1d9c1979 inherit pub_methods_class_l_m75_b" id="r_a4eb4b87460545d16d0f6a4bc1d9c1979"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#a4eb4b87460545d16d0f6a4bc1d9c1979">reg_w</a> (uint8_t reg_adr, const uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a4eb4b87460545d16d0f6a4bc1d9c1979 inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2d2c9123a3da6b64259467392873f6 inherit pub_methods_class_l_m75_b" id="r_aab2d2c9123a3da6b64259467392873f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#aab2d2c9123a3da6b64259467392873f6">reg_w</a> (uint8_t reg_adr, uint8_t data)</td></tr>
+<tr class="separator:aab2d2c9123a3da6b64259467392873f6 inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d5a1dcd988caa183a174e7098503ce inherit pub_methods_class_l_m75_b" id="r_a96d5a1dcd988caa183a174e7098503ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#a96d5a1dcd988caa183a174e7098503ce">reg_r</a> (uint8_t reg_adr, uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a96d5a1dcd988caa183a174e7098503ce inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f8404cb988bfa3ba2401b32ae5295d inherit pub_methods_class_l_m75_b" id="r_ae9f8404cb988bfa3ba2401b32ae5295d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_m75_b.html#ae9f8404cb988bfa3ba2401b32ae5295d">reg_r</a> (uint8_t reg_adr)</td></tr>
+<tr class="separator:ae9f8404cb988bfa3ba2401b32ae5295d inherit pub_methods_class_l_m75_b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_temp_sensor"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_temp_sensor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_temp_sensor.html">TempSensor</a></td></tr>
+<tr class="memitem:a495a670b16725f37055f49ae52ffafea inherit pub_methods_class_temp_sensor" id="r_a495a670b16725f37055f49ae52ffafea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temp_sensor.html#a495a670b16725f37055f49ae52ffafea">TempSensor</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;interface, uint8_t i2c_address)</td></tr>
+<tr class="separator:a495a670b16725f37055f49ae52ffafea inherit pub_methods_class_temp_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8527455e1393f2facd705ef0b1076349 inherit pub_methods_class_temp_sensor" id="r_a8527455e1393f2facd705ef0b1076349"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temp_sensor.html#a8527455e1393f2facd705ef0b1076349">~TempSensor</a> ()</td></tr>
+<tr class="separator:a8527455e1393f2facd705ef0b1076349 inherit pub_methods_class_temp_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac322336c253616d12e9184812e93ba2d inherit pub_methods_class_temp_sensor" id="r_ac322336c253616d12e9184812e93ba2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_temp_sensor.html#ac322336c253616d12e9184812e93ba2d">operator float</a> ()</td></tr>
+<tr class="separator:ac322336c253616d12e9184812e93ba2d inherit pub_methods_class_temp_sensor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_i2_c__device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_i2_c__device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i2_c__device.html">I2C_device</a></td></tr>
+<tr class="memitem:a4300a6e559f01b097dacd5808c0f2db6 inherit pub_methods_class_i2_c__device" id="r_a4300a6e559f01b097dacd5808c0f2db6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a4300a6e559f01b097dacd5808c0f2db6">I2C_device</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;interface, uint8_t i2c_address, bool <a class="el" href="class_i2_c__device.html#aa7e393f9d636f9703047a96761828ade">repeated_start_enable</a>=true)</td></tr>
+<tr class="separator:a4300a6e559f01b097dacd5808c0f2db6 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23440498d7cd7cec7784dcda5ed77ef0 inherit pub_methods_class_i2_c__device" id="r_a23440498d7cd7cec7784dcda5ed77ef0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a23440498d7cd7cec7784dcda5ed77ef0">~I2C_device</a> ()</td></tr>
+<tr class="separator:a23440498d7cd7cec7784dcda5ed77ef0 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7e393f9d636f9703047a96761828ade inherit pub_methods_class_i2_c__device" id="r_aa7e393f9d636f9703047a96761828ade"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#aa7e393f9d636f9703047a96761828ade">repeated_start_enable</a> (bool en=true)</td></tr>
+<tr class="separator:aa7e393f9d636f9703047a96761828ade inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2526a8ce59f91ca9019b3d66a76d71 inherit pub_methods_class_i2_c__device" id="r_a4b2526a8ce59f91ca9019b3d66a76d71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a4b2526a8ce59f91ca9019b3d66a76d71">tx</a> (const uint8_t *data, uint16_t size, bool stop=true)</td></tr>
+<tr class="separator:a4b2526a8ce59f91ca9019b3d66a76d71 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371e31074e312ef7718ce71708f265c3 inherit pub_methods_class_i2_c__device" id="r_a371e31074e312ef7718ce71708f265c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a371e31074e312ef7718ce71708f265c3">rx</a> (uint8_t *data, uint16_t size)</td></tr>
+<tr class="separator:a371e31074e312ef7718ce71708f265c3 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d45f6df6f177c162f519312958c4fb inherit pub_methods_class_i2_c__device" id="r_ab6d45f6df6f177c162f519312958c4fb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#ab6d45f6df6f177c162f519312958c4fb">address</a> (void)</td></tr>
+<tr class="separator:ab6d45f6df6f177c162f519312958c4fb inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8640a457511d523f69549704e8d10d9 inherit pub_methods_class_i2_c__device" id="r_ac8640a457511d523f69549704e8d10d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#ac8640a457511d523f69549704e8d10d9">address_overwrite</a> (uint8_t <a class="el" href="class_i2_c__device.html#ab6d45f6df6f177c162f519312958c4fb">address</a>)</td></tr>
+<tr class="separator:ac8640a457511d523f69549704e8d10d9 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a3d9df9b3d9eda4a34a07b23ec6418 inherit pub_methods_class_i2_c__device" id="r_a91a3d9df9b3d9eda4a34a07b23ec6418"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a91a3d9df9b3d9eda4a34a07b23ec6418">ccc_set</a> (<a class="el" href="i3c_8h.html#acba81d13b8fe4dc120a844ff5fb37321">CCC</a> ccc, uint8_t data)</td></tr>
+<tr class="separator:a91a3d9df9b3d9eda4a34a07b23ec6418 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54739fcb66df67b12277c6604d4e3f63 inherit pub_methods_class_i2_c__device" id="r_a54739fcb66df67b12277c6604d4e3f63"><td class="memItemLeft" align="right" valign="top">virtual uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a54739fcb66df67b12277c6604d4e3f63">ccc_get</a> (<a class="el" href="i3c_8h.html#acba81d13b8fe4dc120a844ff5fb37321">CCC</a> ccc, uint8_t *dp, uint8_t length)</td></tr>
+<tr class="separator:a54739fcb66df67b12277c6604d4e3f63 inherit pub_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_serial__device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_serial__device')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_serial__device.html">Serial_device</a></td></tr>
+<tr class="memitem:a8a649a149fa3ffddb621905deb0d8f8a inherit pub_methods_class_serial__device" id="r_a8a649a149fa3ffddb621905deb0d8f8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial__device.html#a8a649a149fa3ffddb621905deb0d8f8a">Serial_device</a> ()</td></tr>
+<tr class="separator:a8a649a149fa3ffddb621905deb0d8f8a inherit pub_methods_class_serial__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ccdd43e316c77fad4d9b6117f67bf28 inherit pub_methods_class_serial__device" id="r_a5ccdd43e316c77fad4d9b6117f67bf28"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial__device.html#a5ccdd43e316c77fad4d9b6117f67bf28">~Serial_device</a> ()</td></tr>
+<tr class="separator:a5ccdd43e316c77fad4d9b6117f67bf28 inherit pub_methods_class_serial__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_attribs_class_i3_c___device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_i3_c___device')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_i3_c___device.html">I3C_Device</a></td></tr>
-<tr class="memitem:aa07ca8e40444645ed7a7f158a32dfaae inherit pro_attribs_class_i3_c___device" id="r_aa07ca8e40444645ed7a7f158a32dfaae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_i2_c.html">I2C</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#aa07ca8e40444645ed7a7f158a32dfaae">_i2c</a></td></tr>
-<tr class="separator:aa07ca8e40444645ed7a7f158a32dfaae inherit pro_attribs_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7350382013072c6760d9b1c442d149d inherit pro_attribs_class_i3_c___device" id="r_ab7350382013072c6760d9b1c442d149d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_c___device.html#ab7350382013072c6760d9b1c442d149d">_addr</a></td></tr>
-<tr class="separator:ab7350382013072c6760d9b1c442d149d inherit pro_attribs_class_i3_c___device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_class_i2_c__device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_class_i2_c__device')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_i2_c__device.html">I2C_device</a></td></tr>
+<tr class="memitem:a9827d0dd088d394df1d78e0e41573baf inherit pub_static_methods_class_i2_c__device" id="r_a9827d0dd088d394df1d78e0e41573baf"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a9827d0dd088d394df1d78e0e41573baf">ping</a> (uint8_t addr)</td></tr>
+<tr class="separator:a9827d0dd088d394df1d78e0e41573baf inherit pub_static_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02df15cd947b3ff3a90f736bc4706fd inherit pub_static_methods_class_i2_c__device" id="r_ae02df15cd947b3ff3a90f736bc4706fd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#ae02df15cd947b3ff3a90f736bc4706fd">scan</a> (<a class="el" href="class_i2_c.html">I2C</a> &amp;target_i2c, uint8_t stop=128)</td></tr>
+<tr class="separator:ae02df15cd947b3ff3a90f736bc4706fd inherit pub_static_methods_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_i2_c__device"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_i2_c__device')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_i2_c__device.html">I2C_device</a></td></tr>
+<tr class="memitem:a5bfeccd62183b8969e43f18ec025a619 inherit pro_attribs_class_i2_c__device" id="r_a5bfeccd62183b8969e43f18ec025a619"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_i2_c.html">I2C</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#a5bfeccd62183b8969e43f18ec025a619">i2c</a></td></tr>
+<tr class="separator:a5bfeccd62183b8969e43f18ec025a619 inherit pro_attribs_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1690942862f4dac204ff918b1f8ca48 inherit pro_attribs_class_i2_c__device" id="r_ac1690942862f4dac204ff918b1f8ca48"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i2_c__device.html#ac1690942862f4dac204ff918b1f8ca48">i2c_addr</a></td></tr>
+<tr class="separator:ac1690942862f4dac204ff918b1f8ca48 inherit pro_attribs_class_i2_c__device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8h_source.html#l00030">30</a> of file <a class="el" href="_p3_t1755_8h_source.html">P3T1755.h</a>.</p>
+<div class="textblock"><p><a class="el" href="class_p3_t1755.html">P3T1755</a> class</p>
+<p>About <a class="el" href="class_p3_t1085.html">P3T1085</a>: <a href="https://www.nxp.com/products/sensors/i3c-ic-digital-temp-sensors/i3c-ic-bus-0-5-c-accurate-digital-temperature-sensor:P3T1755DP">https://www.nxp.com/products/sensors/i3c-ic-digital-temp-sensors/i3c-ic-bus-0-5-c-accurate-digital-temperature-sensor:P3T1755DP</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="_temp_sensor_8h_source.html#l00307">307</a> of file <a class="el" href="_temp_sensor_8h_source.html">TempSensor.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="ae318b12827a065ff514977bda5a2da5c" name="ae318b12827a065ff514977bda5a2da5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae318b12827a065ff514977bda5a2da5c">&#9670;&#160;</a></span>registers</h2>
+<a id="ae8ddf5ef270998685a3b51231e5fcb07" name="ae8ddf5ef270998685a3b51231e5fcb07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ddf5ef270998685a3b51231e5fcb07">&#9670;&#160;</a></span>reg_num</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#ae318b12827a065ff514977bda5a2da5c">P3T1755::registers</a></td>
+          <td class="memname">enum <a class="el" href="#ae8ddf5ef270998685a3b51231e5fcb07">P3T1755::reg_num</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Name of the <a class="el" href="class_p3_t1755.html">P3T1755</a> registers </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae318b12827a065ff514977bda5a2da5cae523e49431893d66f65a3394c12664e8" name="ae318b12827a065ff514977bda5a2da5cae523e49431893d66f65a3394c12664e8"></a>Temp&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae318b12827a065ff514977bda5a2da5ca87db9735a57e2e46d9bfeae70ec174ca" name="ae318b12827a065ff514977bda5a2da5ca87db9735a57e2e46d9bfeae70ec174ca"></a>Conf&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae318b12827a065ff514977bda5a2da5cae8f8072b8aa1aaa01fcfeb6a1ea43c48" name="ae318b12827a065ff514977bda5a2da5cae8f8072b8aa1aaa01fcfeb6a1ea43c48"></a>T_LOW&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae318b12827a065ff514977bda5a2da5ca99e4a4aa80090aad5cec8b71b3dfb1fd" name="ae318b12827a065ff514977bda5a2da5ca99e4a4aa80090aad5cec8b71b3dfb1fd"></a>T_HIGH&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae8ddf5ef270998685a3b51231e5fcb07ae523e49431893d66f65a3394c12664e8" name="ae8ddf5ef270998685a3b51231e5fcb07ae523e49431893d66f65a3394c12664e8"></a>Temp&#160;</td><td class="fielddoc"><p>Temp register <br  />
+ </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae8ddf5ef270998685a3b51231e5fcb07a87db9735a57e2e46d9bfeae70ec174ca" name="ae8ddf5ef270998685a3b51231e5fcb07a87db9735a57e2e46d9bfeae70ec174ca"></a>Conf&#160;</td><td class="fielddoc"><p>Conf register <br  />
+ </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae8ddf5ef270998685a3b51231e5fcb07ae8f8072b8aa1aaa01fcfeb6a1ea43c48" name="ae8ddf5ef270998685a3b51231e5fcb07ae8f8072b8aa1aaa01fcfeb6a1ea43c48"></a>T_LOW&#160;</td><td class="fielddoc"><p>Thyst register <br  />
+ </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae8ddf5ef270998685a3b51231e5fcb07a99e4a4aa80090aad5cec8b71b3dfb1fd" name="ae8ddf5ef270998685a3b51231e5fcb07a99e4a4aa80090aad5cec8b71b3dfb1fd"></a>T_HIGH&#160;</td><td class="fielddoc"><p>Tos registe </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8h_source.html#l00033">33</a> of file <a class="el" href="_p3_t1755_8h_source.html">P3T1755.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_temp_sensor_8h_source.html#l00311">311</a> of file <a class="el" href="_temp_sensor_8h_source.html">TempSensor.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8c76fb2d6a1daf20f9b5f4c211738b8d" name="a8c76fb2d6a1daf20f9b5f4c211738b8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c76fb2d6a1daf20f9b5f4c211738b8d">&#9670;&#160;</a></span>P3T1755()</h2>
+<a id="a5a64d6151d3fb56f328a664fe7986bb4" name="a5a64d6151d3fb56f328a664fe7986bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a64d6151d3fb56f328a664fe7986bb4">&#9670;&#160;</a></span>P3T1755()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,17 +248,24 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">P3T1755::P3T1755 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_i2_c.html">I2C</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>i2c</em>, </span></td>
+          <td class="paramtype"><a class="el" href="class_i2_c.html">I2C</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>interface</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="_p3_t1755_8h.html#ad2ee86f4f2ac54ffacdc4286fe7a40cf">P3T1755_ADDR_I2C</a></span></span>&#160;)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>i2c_address</em><span class="paramdefsep"> = </span><span class="paramdefval">(0x98&#160;&gt;&gt;&#160;1)</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Create a <a class="el" href="class_p3_t1755.html">P3T1755</a> instance connected to specified <a class="el" href="class_i2_c.html">I2C</a> pins with specified address</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0x98&gt;&gt;1)) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00037">37</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_temp_sensor_8cpp_source.html#l00049">49</a> of file <a class="el" href="_temp_sensor_8cpp_source.html">TempSensor.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,6 +274,9 @@ Additional Inherited Members</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">P3T1755::~P3T1755 </td>
@@ -221,15 +285,21 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Destructor of <a class="el" href="class_p3_t1755.html">P3T1755</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00038">38</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_temp_sensor_8cpp_source.html#l00050">50</a> of file <a class="el" href="_temp_sensor_8cpp_source.html">TempSensor.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a827868e9a5bbff7432993b1eb896d4f8" name="a827868e9a5bbff7432993b1eb896d4f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a827868e9a5bbff7432993b1eb896d4f8">&#9670;&#160;</a></span>celsius2short()</h2>
+<a id="a3059047141c874510c1822b742dd8ac5" name="a3059047141c874510c1822b742dd8ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3059047141c874510c1822b742dd8ac5">&#9670;&#160;</a></span>bit_op16()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,316 +308,389 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t P3T1755::celsius2short </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00126">126</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a8c604198b59416b0227945245384f6e5" name="a8c604198b59416b0227945245384f6e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c604198b59416b0227945245384f6e5">&#9670;&#160;</a></span>conf() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void P3T1755::conf </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>conf</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00045">45</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00027">I3C_Device::_addr</a>, <a class="el" href="_p3_t1755_8h_source.html#l00026">I3C_Device::_i2c</a>, <a class="el" href="_p3_t1755_8h_source.html#l00035">Conf</a>, and <a class="el" href="i2c_8cpp_source.html#l00140">I2C::reg_write()</a>.</p>
-
-</div>
-</div>
-<a id="a9ff24ab19ddc5c69690d33dc20749c36" name="a9ff24ab19ddc5c69690d33dc20749c36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ff24ab19ddc5c69690d33dc20749c36">&#9670;&#160;</a></span>conf() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t P3T1755::conf </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00050">50</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00027">I3C_Device::_addr</a>, <a class="el" href="_p3_t1755_8h_source.html#l00026">I3C_Device::_i2c</a>, <a class="el" href="_p3_t1755_8h_source.html#l00035">Conf</a>, and <a class="el" href="i2c_8cpp_source.html#l00157">I2C::reg_read()</a>.</p>
-
-</div>
-</div>
-<a id="a238767453d07655409b46b80d9f45168" name="a238767453d07655409b46b80d9f45168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a238767453d07655409b46b80d9f45168">&#9670;&#160;</a></span>high() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void P3T1755::high </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00058">58</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00037">T_HIGH</a>, and <a class="el" href="_p3_t1755_8cpp_source.html#l00078">write()</a>.</p>
-
-</div>
-</div>
-<a id="a95452be0462046e9f9803adea751803c" name="a95452be0462046e9f9803adea751803c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95452be0462046e9f9803adea751803c">&#9670;&#160;</a></span>high() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float P3T1755::high </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00063">63</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8cpp_source.html#l00084">read()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00121">short2celsius()</a>, and <a class="el" href="_p3_t1755_8h_source.html#l00037">T_HIGH</a>.</p>
-
-</div>
-</div>
-<a id="aee6465d56019afca83380991c754a28d" name="aee6465d56019afca83380991c754a28d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee6465d56019afca83380991c754a28d">&#9670;&#160;</a></span>info()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void P3T1755::info </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00092">92</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8cpp_source.html#l00027">I3C_Device::ccc_get()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00126">celsius2short()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00050">conf()</a>, <a class="el" href="i3c_8h_source.html#l00037">DIRECT_GETBCR</a>, <a class="el" href="i3c_8h_source.html#l00038">DIRECT_GETDCR</a>, <a class="el" href="i3c_8h_source.html#l00036">DIRECT_GETPID</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00063">high()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00073">low()</a>, <a class="el" href="_p3_t1755_8h_source.html#l00011">P3T1755_ADDR_I3C</a>, <a class="el" href="i3c_8h_source.html#l00068">I3C::PID_LENGTH</a>, and <a class="el" href="_p3_t1755_8cpp_source.html#l00040">temp()</a>.</p>
-
-</div>
-</div>
-<a id="a00b3747d04d004e1332903020c57856c" name="a00b3747d04d004e1332903020c57856c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00b3747d04d004e1332903020c57856c">&#9670;&#160;</a></span>low() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void P3T1755::low </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00068">68</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00036">T_LOW</a>, and <a class="el" href="_p3_t1755_8cpp_source.html#l00078">write()</a>.</p>
-
-</div>
-</div>
-<a id="a6947de5b3283da74b5f2f008b064b86b" name="a6947de5b3283da74b5f2f008b064b86b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6947de5b3283da74b5f2f008b064b86b">&#9670;&#160;</a></span>low() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float P3T1755::low </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00073">73</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8cpp_source.html#l00084">read()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00121">short2celsius()</a>, and <a class="el" href="_p3_t1755_8h_source.html#l00036">T_LOW</a>.</p>
-
-</div>
-</div>
-<a id="af960c6f813e5ba6a457b5fc1790d9988" name="af960c6f813e5ba6a457b5fc1790d9988"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af960c6f813e5ba6a457b5fc1790d9988">&#9670;&#160;</a></span>operator float()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">P3T1755::operator float </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>A short hand for reading pins </p>
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00140">140</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a07d629e8eaabe50ee530a074a3f99b25" name="a07d629e8eaabe50ee530a074a3f99b25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07d629e8eaabe50ee530a074a3f99b25">&#9670;&#160;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int16_t P3T1755::read </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00084">84</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00027">I3C_Device::_addr</a>, <a class="el" href="_p3_t1755_8h_source.html#l00026">I3C_Device::_i2c</a>, and <a class="el" href="i2c_8cpp_source.html#l00157">I2C::reg_read()</a>.</p>
-
-</div>
-</div>
-<a id="ac537b7167df81d269c31a1a993998ce0" name="ac537b7167df81d269c31a1a993998ce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac537b7167df81d269c31a1a993998ce0">&#9670;&#160;</a></span>short2celsius()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float P3T1755::short2celsius </td>
-          <td>(</td>
-          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00121">121</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8cpp_source.html#l00131">swap_bytes()</a>.</p>
-
-</div>
-</div>
-<a id="a8dfa681b26d56778a008eb7fc225e5d8" name="a8dfa681b26d56778a008eb7fc225e5d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dfa681b26d56778a008eb7fc225e5d8">&#9670;&#160;</a></span>swap_bytes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int16_t P3T1755::swap_bytes </td>
-          <td>(</td>
-          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00131">131</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a766dba34dff77f07f6c41cca3d452ad7" name="a766dba34dff77f07f6c41cca3d452ad7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a766dba34dff77f07f6c41cca3d452ad7">&#9670;&#160;</a></span>temp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float P3T1755::temp </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00040">40</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="_p3_t1755_8cpp_source.html#l00084">read()</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00121">short2celsius()</a>, and <a class="el" href="_p3_t1755_8h_source.html#l00034">Temp</a>.</p>
-
-</div>
-</div>
-<a id="a3e94dc85dc7c754150b038471445999e" name="a3e94dc85dc7c754150b038471445999e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e94dc85dc7c754150b038471445999e">&#9670;&#160;</a></span>write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void P3T1755::write </td>
+          <td class="memname">void P3T1755::bit_op16 </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>v</em></span>&#160;)</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>mask</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p3_t1755_8cpp_source.html#l00078">78</a> of file <a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a>.</p>
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a78ca4f8a0ccfba1ff6436cd7d7ec8b02">LM75B</a>.</p>
 
-<p class="reference">References <a class="el" href="_p3_t1755_8h_source.html#l00027">I3C_Device::_addr</a>, <a class="el" href="_p3_t1755_8h_source.html#l00026">I3C_Device::_i2c</a>, <a class="el" href="_p3_t1755_8cpp_source.html#l00126">celsius2short()</a>, <a class="el" href="i2c_8cpp_source.html#l00140">I2C::reg_write()</a>, and <a class="el" href="_p3_t1755_8cpp_source.html#l00131">swap_bytes()</a>.</p>
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#ae0db17fca282fa95607a6a4094b806a1">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="a67013c65d1e649435e6fbc7120dcfbed" name="a67013c65d1e649435e6fbc7120dcfbed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67013c65d1e649435e6fbc7120dcfbed">&#9670;&#160;</a></span>bit_op8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void P3T1755::bit_op8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Register overwriting with bit-mask</p>
+<p>Register can be updated by bit level</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">mask</td><td>bit-mask to protect overwriting </td></tr>
+    <tr><td class="paramname">value</td><td>value to overwrite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a95fd92c4eb3cbfc8ab19e1ef86de0cdc">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#aa860f0a6fb8fea4efb6dd532e44f2c03">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="a0d1859a4fbc9c01d6876cabf256b9169" name="a0d1859a4fbc9c01d6876cabf256b9169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d1859a4fbc9c01d6876cabf256b9169">&#9670;&#160;</a></span>os_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void P3T1755::os_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69">mode</a></td>          <td class="paramname"><span class="paramname"><em>flag</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set OS operation mode</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>use <a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69ab4199759877d837f231fb22a03860279">P3T1755::COMPARATOR</a> or <a class="el" href="class_temp_sensor.html#a04ed17a63cb73f086579970c6b7daa69a9285a209072a37c7ce5c6dc0530bc72e">P3T1755::INTERRUPT</a> values </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#ac5f650d5bafb908488c41b07c5a2706f">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t1035.html#afe149ab70d9e88205510b34ca4083b73">P3T1035</a>, <a class="el" href="class_p3_t2030.html#ac332b66f91cce4639f3567fdfc3915eb">P3T2030</a>, and <a class="el" href="class_p3_t1085.html#a720b8ea67905de6af8f71b69800bd17b">P3T1085</a>.</p>
+
+</div>
+</div>
+<a id="ac6a7100ded0005967ea240dc6ff383b6" name="ac6a7100ded0005967ea240dc6ff383b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a7100ded0005967ea240dc6ff383b6">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float P3T1755::read </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get temperature value in degree Celsius [°C]</p>
+<p>This method simply calls "temp()" method <br  />
+</p>
+<dl class="section return"><dt>Returns</dt><dd>temperature value in degree Celsius [°C] </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a1f7db18f85f8f6dd2bf18d4405100f09">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t1085.html#a029bf87adc79fc441fc8aaa263f03d5a">P3T1085</a>, <a class="el" href="class_p3_t1035.html#a2dff6e65201caea156adc36aa1bd4e3a">P3T1035</a>, and <a class="el" href="class_p3_t2030.html#a3333bcc6370383a45b7401a23b2885cf">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="ae2e130b030ef68e485f58a17b137c597" name="ae2e130b030ef68e485f58a17b137c597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e130b030ef68e485f58a17b137c597">&#9670;&#160;</a></span>read_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t P3T1755::read_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Register read, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a313d6e111d9c0352d9a5a34e640e4924">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#addff956c7c237cb2ee122bd7182feb6a">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="a94571e64f9737e86ac064ec3123ea835" name="a94571e64f9737e86ac064ec3123ea835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94571e64f9737e86ac064ec3123ea835">&#9670;&#160;</a></span>read_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t P3T1755::read_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Register read, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data value </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a8fd3bab1869aca1f232a73c1ac8597aa">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#a0a1b2aa79a0dd574f06986ebc1fd0967">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="ab404a5e706067c6f7228e88d4d898d20" name="ab404a5e706067c6f7228e88d4d898d20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab404a5e706067c6f7228e88d4d898d20">&#9670;&#160;</a></span>temp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float P3T1755::temp </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get temperature value in degree Celsius [°C]</p>
+<dl class="section return"><dt>Returns</dt><dd>temperature value in degree Celsius [°C] </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a79d2abb6fc0062854deb8b4be344d1af">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t1085.html#a88f200b5c45a3e65af25fbf92d78cbd5">P3T1085</a>, <a class="el" href="class_p3_t1035.html#a3837e3b42c6ee9d2dde13b896034b82e">P3T1035</a>, and <a class="el" href="class_p3_t2030.html#a1918d3c79b77bf31bf556a2e9ea313e3">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="afd8a3a191398570bd81d2db1b238d663" name="afd8a3a191398570bd81d2db1b238d663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd8a3a191398570bd81d2db1b238d663">&#9670;&#160;</a></span>thresholds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void P3T1755::thresholds </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>v0</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>v1</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set Overtemperature shutdown threshold (Tos) and hysteresis (Thyst) in degree Celsius [°C]</p>
+<p>This method takes 2 values and higher value will set as the threshold (Tos) and another will be the hysteresis (Thyst)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>a value in degree Celsius </td></tr>
+    <tr><td class="paramname">v1</td><td>a value in degree Celsius </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#aa51d1a18c728c7ab1be9f2c5dbd90392">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t1085.html#a7c05906400383513e046cf13178bb684">P3T1085</a>, <a class="el" href="class_p3_t1035.html#a52074893326fa7be87f82b27943c812b">P3T1035</a>, and <a class="el" href="class_p3_t2030.html#a84b96d69d1d45a06108a33ca399314fc">P3T2030</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_temp_sensor_8cpp_source.html#l00052">52</a> of file <a class="el" href="_temp_sensor_8cpp_source.html">TempSensor.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="_temp_sensor_8h_source.html#l00315">T_HIGH</a>, <a class="el" href="_temp_sensor_8h_source.html#l00314">T_LOW</a>, and <a class="el" href="#a554bffb9e41a85edddb10c686ba93c4b">write_r16()</a>.</p>
+
+</div>
+</div>
+<a id="a554bffb9e41a85edddb10c686ba93c4b" name="a554bffb9e41a85edddb10c686ba93c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a554bffb9e41a85edddb10c686ba93c4b">&#9670;&#160;</a></span>write_r16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void P3T1755::write_r16 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Register write, 16 bit</p>
+<p>This 16 bit access may ot be common but it's useful for sensor devices</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#a3ff7211d0d07434f56a5d066006a59e6">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#a21d1108d8a2dc6f45db2a6d196197d47">P3T2030</a>.</p>
+
+</div>
+</div>
+<a id="a0b950013fa928af7d61deb6a56a0f8b3" name="a0b950013fa928af7d61deb6a56a0f8b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b950013fa928af7d61deb6a56a0f8b3">&#9670;&#160;</a></span>write_r8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void P3T1755::write_r8 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>reg</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Register write, 8 bit</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">val</td><td>data value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_l_m75_b.html#aa460245a8ebbf0ab05078601ede40b5f">LM75B</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p3_t2030.html#a7b5546f7bd0a7b21f22adc860158d6ff">P3T2030</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>r01device/temp_sensor/<a class="el" href="_p3_t1755_8h_source.html">P3T1755.h</a></li>
-<li>r01device/temp_sensor/<a class="el" href="_p3_t1755_8cpp_source.html">P3T1755.cpp</a></li>
+<li>r01device/temp_sensor/<a class="el" href="_temp_sensor_8h_source.html">TempSensor.h</a></li>
+<li>r01device/temp_sensor/<a class="el" href="_temp_sensor_8cpp_source.html">TempSensor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
