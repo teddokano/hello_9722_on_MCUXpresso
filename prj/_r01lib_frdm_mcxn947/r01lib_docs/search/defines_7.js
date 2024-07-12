@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['lpi2c_5fmaster_5fclock_5ffrequency_0',['LPI2C_MASTER_CLOCK_FREQUENCY',['../i2c_8cpp.html#aa2ae34e7e8d10c9d78c288704bec093c',1,'i2c.cpp']]],
-  ['lpspi_5fmaster_5fclk_5ffreq_1',['LPSPI_MASTER_CLK_FREQ',['../spi_8cpp.html#a967c69428e6a7ea82d2bf6d13113c018',1,'spi.cpp']]]
+  ['pin_5finput_0',['PIN_INPUT',['../io_8h.html#a5a94a90bd5b33109a2e3832760bc5da1',1,'io.h']]],
+  ['pin_5foutput_1',['PIN_OUTPUT',['../io_8h.html#a16f6fcf4256a279427eb2c243c9e0bd5',1,'io.h']]]
 ];

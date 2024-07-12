@@ -49,9 +49,8 @@ var searchData=
   ['gradationcontrol_46',['GradationControl',['../class_gradation_control.html',1,'GradationControl'],['../class_gradation_control.html#a3852269547504376e809fcd76edac965',1,'GradationControl::GradationControl()']]],
   ['gradationcontrol_2ecpp_47',['GradationControl.cpp',['../_gradation_control_8cpp.html',1,'']]],
   ['gradationcontrol_2eh_48',['GradationControl.h',['../_gradation_control_8h.html',1,'']]],
-  ['green_49',['GREEN',['../io_8h.html#acfbc006ea433ad708fdee3e82996e721',1,'io.h']]],
-  ['group_50',['GROUP',['../_l_e_d_driver_8h.html#a2d5783d2dc241118f8bccb9069911207aa080685d80f04dc0f10c028c686ea221',1,'LEDDriver.h']]],
-  ['group_51',['group',['../class_gradation_control.html#ab6749e0b8ae559a6a4e80381f330a36b',1,'GradationControl']]],
-  ['grpfreq_52',['GRPFREQ',['../class_p_c_a9955_b.html#a8d7db2740e4e03122c6e54ca6edfd4b0a4c10247d957a18f1dad208e494ad9ce4',1,'PCA9955B::GRPFREQ'],['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6adaeab795dcbb0a9809cf06b0a6e9a18f',1,'PCA9956B::GRPFREQ'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfae576d4f276a0a6f79fa0903a118e4694',1,'PCA9957::GRPFREQ']]],
-  ['grppwm_53',['GRPPWM',['../class_p_c_a9955_b.html#a8d7db2740e4e03122c6e54ca6edfd4b0aaa0755e8bf38a0283fed258bb8634ca7',1,'PCA9955B::GRPPWM'],['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6adb64644bdec05a0ab80170024707f54c',1,'PCA9956B::GRPPWM'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfa8f2df53b589d2927d5cbbec78a057437',1,'PCA9957::GRPPWM']]]
+  ['group_49',['GROUP',['../_l_e_d_driver_8h.html#a2d5783d2dc241118f8bccb9069911207aa080685d80f04dc0f10c028c686ea221',1,'LEDDriver.h']]],
+  ['group_50',['group',['../class_gradation_control.html#ab6749e0b8ae559a6a4e80381f330a36b',1,'GradationControl']]],
+  ['grpfreq_51',['GRPFREQ',['../class_p_c_a9955_b.html#a8d7db2740e4e03122c6e54ca6edfd4b0a4c10247d957a18f1dad208e494ad9ce4',1,'PCA9955B::GRPFREQ'],['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6adaeab795dcbb0a9809cf06b0a6e9a18f',1,'PCA9956B::GRPFREQ'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfae576d4f276a0a6f79fa0903a118e4694',1,'PCA9957::GRPFREQ']]],
+  ['grppwm_52',['GRPPWM',['../class_p_c_a9955_b.html#a8d7db2740e4e03122c6e54ca6edfd4b0aaa0755e8bf38a0283fed258bb8634ca7',1,'PCA9955B::GRPPWM'],['../class_p_c_a9956_b.html#a1c42ab3610e23210f1b16853720746c6adb64644bdec05a0ab80170024707f54c',1,'PCA9956B::GRPPWM'],['../class_p_c_a9957.html#a610d947e7f133df79eca84b296a765cfa8f2df53b589d2927d5cbbec78a057437',1,'PCA9957::GRPPWM']]]
 ];

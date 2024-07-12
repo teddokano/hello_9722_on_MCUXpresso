@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blue_0',['BLUE',['../io_8h.html#a79d10e672abb49ad63eeaa8aaef57c38',1,'io.h']]]
+  ['custom_5fregistar_5fxfer_0',['CUSTOM_REGISTAR_XFER',['../i3c_8h.html#a1890ecd35abcfe4c4029772fd92711d9',1,'i3c.h']]]
 ];

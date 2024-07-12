@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "fgi",
   7: "abcdfimprst",
   8: "_abcdefghilmnoprstvwy",
-  9: "abcdegilmnprst",
+  9: "acdeginprs",
   10: "r"
 };
 

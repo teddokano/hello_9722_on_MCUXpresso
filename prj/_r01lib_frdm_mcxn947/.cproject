@@ -104,7 +104,7 @@
 								<option id="gnu.cpp.compiler.option.warnings.wundef.831878608" name="An undefined identifier is evaluated in an #if directive (-Wundef)" superClass="gnu.cpp.compiler.option.warnings.wundef" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.warnings.weffcpp.376174114" name="Effective C++ guidelines (-Weffc++)" superClass="gnu.cpp.compiler.option.warnings.weffcpp" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.warnings.wfloatequal.710748471" name="Direct float equal check (-Wfloat-equal)" superClass="gnu.cpp.compiler.option.warnings.wfloatequal" useByScannerDiscovery="false"/>
-								<option id="gnu.cpp.compiler.option.other.other.1423855143" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fno-rtti -fno-exceptions" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1423855143" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -fno-builtin -fno-rtti -fno-exceptions" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.other.otherExcludedFromScannerDiscovery.2127434614" name="Other flags (excluded from discovery)" superClass="gnu.cpp.compiler.option.other.otherExcludedFromScannerDiscovery" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.other.verbose.539688308" name="Verbose (-v)" superClass="gnu.cpp.compiler.option.other.verbose" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.other.pic.1835270062" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" useByScannerDiscovery="false"/>
@@ -120,6 +120,8 @@
 								<option id="com.crt.advproject.cpp.config.274741352" name="Obsolete (Config)" superClass="com.crt.advproject.cpp.config" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.cpp.store.1954341259" name="Obsolete (Store)" superClass="com.crt.advproject.cpp.store" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.cpp.lib.debug.option.optimization.level.1276679117" name="Optimization Level" superClass="com.crt.advproject.cpp.lib.debug.option.optimization.level" useByScannerDiscovery="true" value="gnu.cpp.compiler.optimization.level.more" valueType="enumerated"/>
+								<option id="com.crt.advproject.cpp.lib.debug.option.debugging.level.146903457" name="Debug Level" superClass="com.crt.advproject.cpp.lib.debug.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.lib.debug.option.debugging.other.696078332" name="Other debugging flags" superClass="com.crt.advproject.cpp.lib.debug.option.debugging.other" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.cpp.input.1514767211" superClass="com.crt.advproject.compiler.cpp.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gcc.lib.debug.412664229" name="MCU C Compiler" superClass="com.crt.advproject.gcc.lib.debug">
@@ -188,7 +190,7 @@
 								<option id="gnu.c.compiler.option.warnings.wundef.1140830009" name="An undefined identifier is evaluated in an #if directive (-Wundef)" superClass="gnu.c.compiler.option.warnings.wundef" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.warnings.wwritestrings.1370204520" name="Treat strings always as const (-Wwrite-strings)" superClass="gnu.c.compiler.option.warnings.wwritestrings" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.warnings.wfloatequal.1001950504" name="Direct float equal check (-Wfloat-equal)" superClass="gnu.c.compiler.option.warnings.wfloatequal" useByScannerDiscovery="false"/>
-								<option id="gnu.c.compiler.option.misc.other.1853734621" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1853734621" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -fno-builtin" valueType="string"/>
 								<option id="gnu.c.compiler.option.misc.otherExcludedFromScannerDiscovery.1911237401" name="Other flags (excluded from discovery)" superClass="gnu.c.compiler.option.misc.otherExcludedFromScannerDiscovery" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.misc.verbose.226468535" name="Verbose (-v)" superClass="gnu.c.compiler.option.misc.verbose" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.misc.ansi.484239902" name="Support ANSI programs (-ansi)" superClass="gnu.c.compiler.option.misc.ansi" useByScannerDiscovery="false"/>
@@ -208,6 +210,8 @@
 								<option id="com.crt.advproject.gcc.config.432709761" name="Obsolete (Config)" superClass="com.crt.advproject.gcc.config" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.store.884995063" name="Obsolete (Store)" superClass="com.crt.advproject.gcc.store" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.lib.debug.option.optimization.level.1345199236" name="Optimization Level" superClass="com.crt.advproject.gcc.lib.debug.option.optimization.level" useByScannerDiscovery="true"/>
+								<option id="com.crt.advproject.gcc.lib.debug.option.debugging.level.1537386246" name="Debug Level" superClass="com.crt.advproject.gcc.lib.debug.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.lib.debug.option.debugging.other.1090737889" name="Other debugging flags" superClass="com.crt.advproject.gcc.lib.debug.option.debugging.other" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.input.1593608992" superClass="com.crt.advproject.compiler.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gas.lib.debug.1209444661" name="MCU Assembler" superClass="com.crt.advproject.gas.lib.debug">
@@ -226,10 +230,14 @@
 								<option id="com.crt.advproject.gas.specs.1627784560" name="Specs" superClass="com.crt.advproject.gas.specs" value="com.crt.advproject.gas.specs.newlibnano" valueType="enumerated"/>
 								<option id="com.crt.advproject.gas.config.50414322" name="Obsolete (Config)" superClass="com.crt.advproject.gas.config"/>
 								<option id="com.crt.advproject.gas.store.2113942025" name="Obsolete (Store)" superClass="com.crt.advproject.gas.store"/>
+								<option id="com.crt.advproject.gas.lib.debug.option.debugging.level.1431141817" name="Debug level" superClass="com.crt.advproject.gas.lib.debug.option.debugging.level"/>
+								<option id="com.crt.advproject.gas.lib.debug.option.debugging.other.1803924319" name="Other debugging flags" superClass="com.crt.advproject.gas.lib.debug.option.debugging.other"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1703223597" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.crt.advproject.assembler.input.952816437" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
 							</tool>
-							<tool id="com.crt.advproject.ar.lib.debug.597150046" name="MCU Archiver" superClass="com.crt.advproject.ar.lib.debug"/>
+							<tool id="com.crt.advproject.ar.lib.debug.597150046" name="MCU Archiver" superClass="com.crt.advproject.ar.lib.debug">
+								<option id="gnu.both.lib.option.flags.925021497" name="Archiver flags" superClass="gnu.both.lib.option.flags"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
@@ -347,7 +355,7 @@
 								<option id="gnu.cpp.compiler.option.warnings.wundef.294746273" name="An undefined identifier is evaluated in an #if directive (-Wundef)" superClass="gnu.cpp.compiler.option.warnings.wundef" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.warnings.weffcpp.1187961907" name="Effective C++ guidelines (-Weffc++)" superClass="gnu.cpp.compiler.option.warnings.weffcpp" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.warnings.wfloatequal.850501996" name="Direct float equal check (-Wfloat-equal)" superClass="gnu.cpp.compiler.option.warnings.wfloatequal" useByScannerDiscovery="false"/>
-								<option id="gnu.cpp.compiler.option.other.other.1986763181" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fno-rtti -fno-exceptions" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1986763181" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -fno-builtin -fno-rtti -fno-exceptions" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.other.otherExcludedFromScannerDiscovery.1833543622" name="Other flags (excluded from discovery)" superClass="gnu.cpp.compiler.option.other.otherExcludedFromScannerDiscovery" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.other.verbose.1639698295" name="Verbose (-v)" superClass="gnu.cpp.compiler.option.other.verbose" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.other.pic.429303290" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" useByScannerDiscovery="false"/>
@@ -365,6 +373,8 @@
 								<option id="com.crt.advproject.cpp.config.1165568655" name="Obsolete (Config)" superClass="com.crt.advproject.cpp.config" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.cpp.store.2012577784" name="Obsolete (Store)" superClass="com.crt.advproject.cpp.store" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.cpp.lib.release.option.optimization.level.1385192214" name="Optimization Level" superClass="com.crt.advproject.cpp.lib.release.option.optimization.level" useByScannerDiscovery="true"/>
+								<option id="com.crt.advproject.cpp.lib.release.option.debugging.level.464335984" name="Debug Level" superClass="com.crt.advproject.cpp.lib.release.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.lib.release.option.debugging.other.1166649671" name="Other debugging flags" superClass="com.crt.advproject.cpp.lib.release.option.debugging.other" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.cpp.input.1723401091" superClass="com.crt.advproject.compiler.cpp.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gcc.lib.release.2137691393" name="MCU C Compiler" superClass="com.crt.advproject.gcc.lib.release">
@@ -431,7 +441,7 @@
 								<option id="gnu.c.compiler.option.warnings.wundef.2012885617" name="An undefined identifier is evaluated in an #if directive (-Wundef)" superClass="gnu.c.compiler.option.warnings.wundef" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.warnings.wwritestrings.927146942" name="Treat strings always as const (-Wwrite-strings)" superClass="gnu.c.compiler.option.warnings.wwritestrings" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.warnings.wfloatequal.1400370329" name="Direct float equal check (-Wfloat-equal)" superClass="gnu.c.compiler.option.warnings.wfloatequal" useByScannerDiscovery="false"/>
-								<option id="gnu.c.compiler.option.misc.other.1123583612" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1123583612" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -fno-builtin" valueType="string"/>
 								<option id="gnu.c.compiler.option.misc.otherExcludedFromScannerDiscovery.217739687" name="Other flags (excluded from discovery)" superClass="gnu.c.compiler.option.misc.otherExcludedFromScannerDiscovery" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.misc.verbose.736188692" name="Verbose (-v)" superClass="gnu.c.compiler.option.misc.verbose" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.misc.ansi.1777847938" name="Support ANSI programs (-ansi)" superClass="gnu.c.compiler.option.misc.ansi" useByScannerDiscovery="false"/>
@@ -451,6 +461,8 @@
 								<option id="com.crt.advproject.gcc.config.1566367590" name="Obsolete (Config)" superClass="com.crt.advproject.gcc.config" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.store.1980211428" name="Obsolete (Store)" superClass="com.crt.advproject.gcc.store" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.lib.release.option.optimization.level.2093363009" name="Optimization Level" superClass="com.crt.advproject.gcc.lib.release.option.optimization.level" useByScannerDiscovery="true"/>
+								<option id="com.crt.advproject.gcc.lib.release.option.debugging.level.307164007" name="Debug Level" superClass="com.crt.advproject.gcc.lib.release.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.lib.release.option.debugging.other.749165958" name="Other debugging flags" superClass="com.crt.advproject.gcc.lib.release.option.debugging.other" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.input.1888847695" superClass="com.crt.advproject.compiler.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gas.lib.release.612760146" name="MCU Assembler" superClass="com.crt.advproject.gas.lib.release">
@@ -469,10 +481,14 @@
 								<option id="com.crt.advproject.gas.specs.1869768082" name="Specs" superClass="com.crt.advproject.gas.specs" value="com.crt.advproject.gas.specs.newlibnano" valueType="enumerated"/>
 								<option id="com.crt.advproject.gas.config.1010881949" name="Obsolete (Config)" superClass="com.crt.advproject.gas.config"/>
 								<option id="com.crt.advproject.gas.store.962468518" name="Obsolete (Store)" superClass="com.crt.advproject.gas.store"/>
+								<option id="com.crt.advproject.gas.debug.1891293796" name="Debug level" superClass="com.crt.advproject.gas.debug"/>
+								<option id="com.crt.advproject.gas.option.debugging.other.1105866078" name="Other debugging flags" superClass="com.crt.advproject.gas.option.debugging.other" value="-gdwarf-4" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.797911020" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.crt.advproject.assembler.input.1291973178" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
 							</tool>
-							<tool id="com.crt.advproject.ar.lib.release.1983657243" name="MCU Archiver" superClass="com.crt.advproject.ar.lib.release"/>
+							<tool id="com.crt.advproject.ar.lib.release.1983657243" name="MCU Archiver" superClass="com.crt.advproject.ar.lib.release">
+								<option id="gnu.both.lib.option.flags.1845301180" name="Archiver flags" superClass="gnu.both.lib.option.flags"/>
+							</tool>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
