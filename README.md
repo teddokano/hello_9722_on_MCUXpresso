@@ -11,10 +11,10 @@ This code works on
 - FRDM-MCXN236
 - FRDM-MCXN153  
 
-The code can be built on 
+The code can be built on [MCUXpresso IDE](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
 - MCUXpresso IDE `v11.9.1` or `v11.10.0`
 
-Use MCUXpresso SDK for each MCU boards
-- FRDM-MCXN947: SDK `2.14.0` or `2.16.0`
-- FRDM-MCXN236: SDK `2.14.0` or `2.16.0`
-- FRDM-MCXN153: SDK `2.14.2` or `2.16.0`
+Use [MCUXpresso SDK](https://mcuxpresso.nxp.com/en/welcome) for each MCU boards
+- FRDM-MCXN947: SDK `v2.14.0` or `v2.16.0`
+- FRDM-MCXN236: SDK `v2.14.0` or `v2.16.0`
+- FRDM-MCXN153: SDK `v2.14.2` or `v2.16.0`
