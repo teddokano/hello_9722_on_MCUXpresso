@@ -288,7 +288,7 @@ typedef enum _clock_ip_name
     kCLOCK_Gpio1     = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 20),   /*!< Clock gate name: Gpio1. */
     kCLOCK_Gpio2     = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 21),   /*!< Clock gate name: Gpio2. */
     kCLOCK_Gpio3     = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 22),   /*!< Clock gate name: Gpio3. */
-	kCLOCK_Gpio4     = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 23),   /*!< Clock gate name: Gpio4. */
+    kCLOCK_Gpio4     = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 23),   /*!< Clock gate name: Gpio4. */
     kCLOCK_Pint      = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 25),   /*!< Clock gate name: Pint. */
     kCLOCK_Dma0      = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 26),   /*!< Clock gate name: Dma0. */
     kCLOCK_Crc0      = CLK_GATE_DEFINE(AHB_CLK_CTRL0, 27),   /*!< Clock gate name: Crc. */
@@ -1142,9 +1142,6 @@ static inline void CLOCK_EnableClock(clock_ip_name_t clk)
     uint32_t index = CLK_GATE_ABSTRACT_REG_OFFSET(clk);
     uint32_t bit   = CLK_GATE_ABSTRACT_BITS_SHIFT(clk);
 
-    if (clk == kCLOCK_None)
-        return;
-
     if (index == (uint32_t)REG_PWM0SUBCTL)
     {
         SYSCON->PWM0SUBCTL |= (1UL << bit);
@@ -1170,9 +1167,6 @@ static inline void CLOCK_DisableClock(clock_ip_name_t clk)
 {
     uint32_t index = CLK_GATE_ABSTRACT_REG_OFFSET(clk);
     uint32_t bit   = CLK_GATE_ABSTRACT_BITS_SHIFT(clk);
-
-    if (clk == kCLOCK_None)
-        return;
 
     if (index == (uint32_t)REG_PWM0SUBCTL)
     {

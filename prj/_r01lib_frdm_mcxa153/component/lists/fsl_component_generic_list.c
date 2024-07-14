@@ -143,7 +143,7 @@ list_status_t LIST_AddTail(list_handle_t list, list_element_handle_t listElement
 #endif
         listElement->list = list;
         listElement->next = NULL;
-        list->tail    = listElement;
+        list->tail        = listElement;
         list->size++;
     }
 
@@ -190,7 +190,7 @@ list_status_t LIST_AddHead(list_handle_t list, list_element_handle_t listElement
 #endif
         listElement->list = list;
         listElement->next = list->head;
-        list->head    = listElement;
+        list->head        = listElement;
         list->size++;
     }
 
@@ -239,7 +239,7 @@ list_element_handle_t LIST_RemoveHead(list_handle_t list)
         }
 #endif
         listElement->list = NULL;
-        list->head    = listElement->next; /*Is NULL if element is head*/
+        list->head        = listElement->next; /*Is NULL if element is head*/
     }
 
     LIST_EXIT_CRITICAL();
@@ -338,6 +338,7 @@ list_status_t LIST_RemoveElement(list_element_handle_t listElement)
     {
 #if (defined(GENERIC_LIST_LIGHT) && (GENERIC_LIST_LIGHT > 0U))
         list_element_handle_t element_list = listElement->list->head;
+        list_element_handle_t element_Prev = NULL;
         while (NULL != element_list)
         {
             if (listElement->list->head == listElement)
@@ -347,21 +348,26 @@ list_status_t LIST_RemoveElement(list_element_handle_t listElement)
             }
             if (element_list->next == listElement)
             {
+                element_Prev       = element_list;
                 element_list->next = listElement->next;
                 break;
             }
             element_list = element_list->next;
         }
+        if (listElement->next == NULL)
+        {
+            listElement->list->tail = element_Prev;
+        }
 #else
-        if (listElement->prev == NULL) /*Element is head or solo*/
+        if (listElement->prev == NULL)                   /*Element is head or solo*/
         {
             listElement->list->head = listElement->next; /*is null if solo*/
         }
-        if (listElement->next == NULL) /*Element is tail or solo*/
+        if (listElement->next == NULL)                   /*Element is tail or solo*/
         {
             listElement->list->tail = listElement->prev; /*is null if solo*/
         }
-        if (listElement->prev != NULL) /*Element is not head*/
+        if (listElement->prev != NULL)                   /*Element is not head*/
         {
             listElement->prev->next = listElement->next;
         }
@@ -443,8 +449,8 @@ list_status_t LIST_AddPrevElement(list_element_handle_t listElement, list_elemen
             }
             newElement->list = listElement->list;
             listElement->list->size++;
-            newElement->next = listElement;
-            newElement->prev = listElement->prev;
+            newElement->next  = listElement;
+            newElement->prev  = listElement->prev;
             listElement->prev = newElement;
 #endif
         }

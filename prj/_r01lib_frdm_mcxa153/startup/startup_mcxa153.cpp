@@ -1,10 +1,10 @@
 //*****************************************************************************
 // MCXA153 startup code for use with MCUXpresso IDE
 //
-// Version : 211123
+// Version : 010424
 //*****************************************************************************
 //
-// Copyright 2016-2023 NXP
+// Copyright 2016-2024 NXP
 // All rights reserved.
 //
 // SPDX-License-Identifier: BSD-3-Clause

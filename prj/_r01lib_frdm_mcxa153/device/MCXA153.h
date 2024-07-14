@@ -2,6 +2,7 @@
 ** ###################################################################
 **     Processors:          MCXA153VFM
 **                          MCXA153VFT
+**                          MCXA153VLF
 **                          MCXA153VLH
 **
 **     Compilers:           GNU C Compiler
@@ -11,13 +12,13 @@
 **
 **     Reference manual:    MCXA1 User manual
 **     Version:             rev. 1.0, 2022-03-29
-**     Build:               b231121
+**     Build:               b240403
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MCXA153
 **
 **     Copyright 1997-2016 Freescale Semiconductor, Inc.
-**     Copyright 2016-2023 NXP
+**     Copyright 2016-2024 NXP
 **     SPDX-License-Identifier: BSD-3-Clause
 **
 **     http:                 www.nxp.com
@@ -20700,2044 +20701,6 @@ typedef struct {
 
 
 /* ----------------------------------------------------------------------------
-   -- MBC Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup MBC_Peripheral_Access_Layer MBC Peripheral Access Layer
- * @{
- */
-
-/** MBC - Register Layout Typedef */
-typedef struct {
-  __IO uint32_t MBC0_MEM_GLBCFG[4];                /**< MBC Global Configuration Register, array offset: 0x0, array step: 0x4 */
-  __IO uint32_t MBC0_NSE_BLK_INDEX;                /**< MBC NonSecure Enable Block Index, offset: 0x10 */
-  __O  uint32_t MBC0_NSE_BLK_SET;                  /**< MBC NonSecure Enable Block Set, offset: 0x14 */
-  __O  uint32_t MBC0_NSE_BLK_CLR;                  /**< MBC NonSecure Enable Block Clear, offset: 0x18 */
-  __O  uint32_t MBC0_NSE_BLK_CLR_ALL;              /**< MBC NonSecure Enable Block Clear All, offset: 0x1C */
-  __IO uint32_t MBC0_MEMN_GLBAC[8];                /**< MBC Global Access Control, array offset: 0x20, array step: 0x4 */
-  struct {                                         /* offset: 0x40, array step: 0x18C */
-    __IO uint32_t MBC0_DOM_MEM0_BLK_CFG_W0;          /**< MBC Memory Block Configuration Word, array offset: 0x40, array step: 0x18C */
-    __IO uint32_t MBC0_DOM_MEM0_BLK_CFG_W1;          /**< MBC Memory Block Configuration Word, array offset: 0x44, array step: 0x18C */
-         uint8_t RESERVED_0[248];
-    __IO uint32_t MBC0_DOM_MEM0_BLK_NSE_W0;          /**< MBC Memory Block NonSecure Enable Word, array offset: 0x140, array step: 0x18C */
-         uint8_t RESERVED_1[60];
-    __IO uint32_t MBC0_DOM_MEM1_BLK_CFG_W0;          /**< MBC Memory Block Configuration Word, array offset: 0x180, array step: 0x18C */
-         uint8_t RESERVED_2[28];
-    __IO uint32_t MBC0_DOM_MEM1_BLK_NSE_W0;          /**< MBC Memory Block NonSecure Enable Word, array offset: 0x1A0, array step: 0x18C */
-         uint8_t RESERVED_3[4];
-    __IO uint32_t MBC0_DOM_MEM2_BLK_CFG_W0;          /**< MBC Memory Block Configuration Word, array offset: 0x1A8, array step: 0x18C */
-         uint8_t RESERVED_4[28];
-    __IO uint32_t MBC0_DOM_MEM2_BLK_NSE_W0;          /**< MBC Memory Block NonSecure Enable Word, array offset: 0x1C8, array step: 0x18C */
-  } MBC_DOM0[1];
-} MBC_Type;
-
-/* ----------------------------------------------------------------------------
-   -- MBC Register Masks
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup MBC_Register_Masks MBC Register Masks
- * @{
- */
-
-/*! @name MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG - MBC Global Configuration Register */
-/*! @{ */
-
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_NBLKS_MASK (0x3FFU)
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_NBLKS_SHIFT (0U)
-/*! NBLKS - Number of blocks in this memory */
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_NBLKS(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_NBLKS_SHIFT)) & MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_NBLKS_MASK)
-
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_SIZE_LOG2_MASK (0x1F0000U)
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_SIZE_LOG2_SHIFT (16U)
-/*! SIZE_LOG2 - Log2 size per block */
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_SIZE_LOG2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_SIZE_LOG2_SHIFT)) & MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_SIZE_LOG2_MASK)
-
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_CLRE_MASK (0xC0000000U)
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_CLRE_SHIFT (30U)
-/*! CLRE - Clear Error */
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_CLRE(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_CLRE_SHIFT)) & MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_CLRE_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG */
-#define MBC_MBC_MEM_GLBCFG0_MBC0_MEM_GLBCFG_COUNT (4U)
-
-/*! @name MBC0_NSE_BLK_INDEX - MBC NonSecure Enable Block Index */
-/*! @{ */
-
-#define MBC_MBC0_NSE_BLK_INDEX_WNDX_MASK         (0x3CU)
-#define MBC_MBC0_NSE_BLK_INDEX_WNDX_SHIFT        (2U)
-/*! WNDX - Word index into the block NSE bitmap. It selects the BLK_NSE_Wn register, where WNDX determines the value of n. */
-#define MBC_MBC0_NSE_BLK_INDEX_WNDX(x)           (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_INDEX_WNDX_SHIFT)) & MBC_MBC0_NSE_BLK_INDEX_WNDX_MASK)
-
-#define MBC_MBC0_NSE_BLK_INDEX_MEM_SEL_MASK      (0xF00U)
-#define MBC_MBC0_NSE_BLK_INDEX_MEM_SEL_SHIFT     (8U)
-/*! MEM_SEL - Memory Select */
-#define MBC_MBC0_NSE_BLK_INDEX_MEM_SEL(x)        (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_INDEX_MEM_SEL_SHIFT)) & MBC_MBC0_NSE_BLK_INDEX_MEM_SEL_MASK)
-
-#define MBC_MBC0_NSE_BLK_INDEX_DID_SEL0_MASK     (0x10000U)
-#define MBC_MBC0_NSE_BLK_INDEX_DID_SEL0_SHIFT    (16U)
-/*! DID_SEL0 - DID Select
- *  0b0..No effect.
- *  0b1..Selects NSE bits for this domain.
- */
-#define MBC_MBC0_NSE_BLK_INDEX_DID_SEL0(x)       (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_INDEX_DID_SEL0_SHIFT)) & MBC_MBC0_NSE_BLK_INDEX_DID_SEL0_MASK)
-
-#define MBC_MBC0_NSE_BLK_INDEX_AI_MASK           (0x80000000U)
-#define MBC_MBC0_NSE_BLK_INDEX_AI_SHIFT          (31U)
-/*! AI - Auto Increment
- *  0b0..No effect.
- *  0b1..Add 1 to the WNDX field after the register write.
- */
-#define MBC_MBC0_NSE_BLK_INDEX_AI(x)             (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_INDEX_AI_SHIFT)) & MBC_MBC0_NSE_BLK_INDEX_AI_MASK)
-/*! @} */
-
-/*! @name MBC0_NSE_BLK_SET - MBC NonSecure Enable Block Set */
-/*! @{ */
-
-#define MBC_MBC0_NSE_BLK_SET_W1SET_MASK          (0xFFFFFFFFU)
-#define MBC_MBC0_NSE_BLK_SET_W1SET_SHIFT         (0U)
-/*! W1SET - Write-1 Set */
-#define MBC_MBC0_NSE_BLK_SET_W1SET(x)            (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_SET_W1SET_SHIFT)) & MBC_MBC0_NSE_BLK_SET_W1SET_MASK)
-/*! @} */
-
-/*! @name MBC0_NSE_BLK_CLR - MBC NonSecure Enable Block Clear */
-/*! @{ */
-
-#define MBC_MBC0_NSE_BLK_CLR_W1CLR_MASK          (0xFFFFFFFFU)
-#define MBC_MBC0_NSE_BLK_CLR_W1CLR_SHIFT         (0U)
-/*! W1CLR - Write-1 Clear */
-#define MBC_MBC0_NSE_BLK_CLR_W1CLR(x)            (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_CLR_W1CLR_SHIFT)) & MBC_MBC0_NSE_BLK_CLR_W1CLR_MASK)
-/*! @} */
-
-/*! @name MBC0_NSE_BLK_CLR_ALL - MBC NonSecure Enable Block Clear All */
-/*! @{ */
-
-#define MBC_MBC0_NSE_BLK_CLR_ALL_MEMSEL_MASK     (0xF00U)
-#define MBC_MBC0_NSE_BLK_CLR_ALL_MEMSEL_SHIFT    (8U)
-/*! MEMSEL - Memory Select */
-#define MBC_MBC0_NSE_BLK_CLR_ALL_MEMSEL(x)       (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_CLR_ALL_MEMSEL_SHIFT)) & MBC_MBC0_NSE_BLK_CLR_ALL_MEMSEL_MASK)
-
-#define MBC_MBC0_NSE_BLK_CLR_ALL_DID_SEL0_MASK   (0x10000U)
-#define MBC_MBC0_NSE_BLK_CLR_ALL_DID_SEL0_SHIFT  (16U)
-/*! DID_SEL0 - DID Select
- *  0b0..No effect.
- *  0b1..Clear all NSE bits for this domain.
- */
-#define MBC_MBC0_NSE_BLK_CLR_ALL_DID_SEL0(x)     (((uint32_t)(((uint32_t)(x)) << MBC_MBC0_NSE_BLK_CLR_ALL_DID_SEL0_SHIFT)) & MBC_MBC0_NSE_BLK_CLR_ALL_DID_SEL0_MASK)
-/*! @} */
-
-/*! @name MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC - MBC Global Access Control */
-/*! @{ */
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUX_MASK (0x1U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUX_SHIFT (0U)
-/*! NUX - NonsecureUser Execute
- *  0b0..Execute access is not allowed in Nonsecure User mode.
- *  0b1..Execute access is allowed in Nonsecure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUX(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUX_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUX_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUW_MASK (0x2U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUW_SHIFT (1U)
-/*! NUW - NonsecureUser Write
- *  0b0..Write access is not allowed in Nonsecure User mode.
- *  0b1..Write access is allowed in Nonsecure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUW(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUW_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUW_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUR_MASK (0x4U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUR_SHIFT (2U)
-/*! NUR - NonsecureUser Read
- *  0b0..Read access is not allowed in Nonsecure User mode.
- *  0b1..Read access is allowed in Nonsecure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUR(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUR_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NUR_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPX_MASK (0x10U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPX_SHIFT (4U)
-/*! NPX - NonsecurePriv Execute
- *  0b0..Execute access is not allowed in Nonsecure Privilege mode.
- *  0b1..Execute access is allowed in Nonsecure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPX(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPX_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPX_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPW_MASK (0x20U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPW_SHIFT (5U)
-/*! NPW - NonsecurePriv Write
- *  0b0..Write access is not allowed in Nonsecure Privilege mode.
- *  0b1..Write access is allowed in Nonsecure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPW(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPW_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPW_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPR_MASK (0x40U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPR_SHIFT (6U)
-/*! NPR - NonsecurePriv Read
- *  0b0..Read access is not allowed in Nonsecure Privilege mode.
- *  0b1..Read access is allowed in Nonsecure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPR(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPR_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_NPR_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUX_MASK (0x100U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUX_SHIFT (8U)
-/*! SUX - SecureUser Execute
- *  0b0..Execute access is not allowed in Secure User mode.
- *  0b1..Execute access is allowed in Secure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUX(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUX_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUX_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUW_MASK (0x200U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUW_SHIFT (9U)
-/*! SUW - SecureUser Write
- *  0b0..Write access is not allowed in Secure User mode.
- *  0b1..Write access is allowed in Secure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUW(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUW_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUW_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUR_MASK (0x400U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUR_SHIFT (10U)
-/*! SUR - SecureUser Read
- *  0b0..Read access is not allowed in Secure User mode.
- *  0b1..Read access is allowed in Secure User mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUR(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUR_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SUR_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPX_MASK (0x1000U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPX_SHIFT (12U)
-/*! SPX - SecurePriv Execute
- *  0b0..Execute access is not allowed in Secure Privilege mode.
- *  0b1..Execute access is allowed in Secure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPX(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPX_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPX_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPW_MASK (0x2000U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPW_SHIFT (13U)
-/*! SPW - SecurePriv Write
- *  0b0..Write access is not allowed in Secure Privilege mode.
- *  0b1..Write access is allowed in Secure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPW(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPW_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPW_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPR_MASK (0x4000U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPR_SHIFT (14U)
-/*! SPR - SecurePriv Read
- *  0b0..Read access is not allowed in Secure Privilege mode.
- *  0b1..Read access is allowed in Secure Privilege mode.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPR(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPR_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_SPR_MASK)
-
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_LK_MASK (0x80000000U)
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_LK_SHIFT (31U)
-/*! LK - LOCK
- *  0b0..This register is not locked and can be altered.
- *  0b1..This register is locked and cannot be altered.
- */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_LK(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_LK_SHIFT)) & MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_LK_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC */
-#define MBC_MBC_MEMN_GLBAC0_MBC0_MEMN_GLBAC_COUNT (8U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0 - MBC Memory Block Configuration Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL0_MASK (0x7U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL0_SHIFT (0U)
-/*! MBACSEL0 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE0_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE0_SHIFT (3U)
-/*! NSE0 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL1_MASK (0x70U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL1_SHIFT (4U)
-/*! MBACSEL1 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE1_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE1_SHIFT (7U)
-/*! NSE1 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL2_MASK (0x700U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL2_SHIFT (8U)
-/*! MBACSEL2 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE2_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE2_SHIFT (11U)
-/*! NSE2 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL3_MASK (0x7000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL3_SHIFT (12U)
-/*! MBACSEL3 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE3_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE3_SHIFT (15U)
-/*! NSE3 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL4_MASK (0x70000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL4_SHIFT (16U)
-/*! MBACSEL4 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE4_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE4_SHIFT (19U)
-/*! NSE4 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL5_MASK (0x700000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL5_SHIFT (20U)
-/*! MBACSEL5 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE5_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE5_SHIFT (23U)
-/*! NSE5 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL6_MASK (0x7000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL6_SHIFT (24U)
-/*! MBACSEL6 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE6_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE6_SHIFT (27U)
-/*! NSE6 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL7_MASK (0x70000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL7_SHIFT (28U)
-/*! MBACSEL7 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_MBACSEL7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE7_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE7_SHIFT (31U)
-/*! NSE7 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_NSE7_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W0_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1 - MBC Memory Block Configuration Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL0_MASK (0x7U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL0_SHIFT (0U)
-/*! MBACSEL0 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE0_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE0_SHIFT (3U)
-/*! NSE0 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL1_MASK (0x70U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL1_SHIFT (4U)
-/*! MBACSEL1 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE1_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE1_SHIFT (7U)
-/*! NSE1 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL2_MASK (0x700U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL2_SHIFT (8U)
-/*! MBACSEL2 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE2_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE2_SHIFT (11U)
-/*! NSE2 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL3_MASK (0x7000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL3_SHIFT (12U)
-/*! MBACSEL3 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE3_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE3_SHIFT (15U)
-/*! NSE3 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL4_MASK (0x70000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL4_SHIFT (16U)
-/*! MBACSEL4 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE4_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE4_SHIFT (19U)
-/*! NSE4 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL5_MASK (0x700000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL5_SHIFT (20U)
-/*! MBACSEL5 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE5_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE5_SHIFT (23U)
-/*! NSE5 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL6_MASK (0x7000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL6_SHIFT (24U)
-/*! MBACSEL6 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE6_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE6_SHIFT (27U)
-/*! NSE6 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL7_MASK (0x70000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL7_SHIFT (28U)
-/*! MBACSEL7 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_MBACSEL7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE7_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE7_SHIFT (31U)
-/*! NSE7 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_NSE7_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_CFG_W1_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0 - MBC Memory Block NonSecure Enable Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT0_MASK (0x1U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT0_SHIFT (0U)
-/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT1_MASK (0x2U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT1_SHIFT (1U)
-/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT2_MASK (0x4U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT2_SHIFT (2U)
-/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT3_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT3_SHIFT (3U)
-/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT4_MASK (0x10U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT4_SHIFT (4U)
-/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT5_MASK (0x20U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT5_SHIFT (5U)
-/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT6_MASK (0x40U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT6_SHIFT (6U)
-/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT7_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT7_SHIFT (7U)
-/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT8_MASK (0x100U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT8_SHIFT (8U)
-/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT8(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT8_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT8_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT9_MASK (0x200U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT9_SHIFT (9U)
-/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT9(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT9_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT9_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT10_MASK (0x400U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT10_SHIFT (10U)
-/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT10(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT10_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT10_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT11_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT11_SHIFT (11U)
-/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT11(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT11_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT11_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT12_MASK (0x1000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT12_SHIFT (12U)
-/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT12(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT12_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT12_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT13_MASK (0x2000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT13_SHIFT (13U)
-/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT13(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT13_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT13_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT14_MASK (0x4000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT14_SHIFT (14U)
-/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT14(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT14_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT14_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT15_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT15_SHIFT (15U)
-/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT15(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT15_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT15_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT16_MASK (0x10000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT16_SHIFT (16U)
-/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT16(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT16_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT16_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT17_MASK (0x20000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT17_SHIFT (17U)
-/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT17(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT17_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT17_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT18_MASK (0x40000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT18_SHIFT (18U)
-/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT18(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT18_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT18_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT19_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT19_SHIFT (19U)
-/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT19(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT19_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT19_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT20_MASK (0x100000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT20_SHIFT (20U)
-/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT20(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT20_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT20_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT21_MASK (0x200000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT21_SHIFT (21U)
-/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT21(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT21_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT21_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT22_MASK (0x400000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT22_SHIFT (22U)
-/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT22(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT22_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT22_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT23_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT23_SHIFT (23U)
-/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT23(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT23_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT23_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT24_MASK (0x1000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT24_SHIFT (24U)
-/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT24(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT24_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT24_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT25_MASK (0x2000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT25_SHIFT (25U)
-/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT25(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT25_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT25_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT26_MASK (0x4000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT26_SHIFT (26U)
-/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT26(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT26_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT26_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT27_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT27_SHIFT (27U)
-/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT27(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT27_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT27_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT28_MASK (0x10000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT28_SHIFT (28U)
-/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT28(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT28_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT28_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT29_MASK (0x20000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT29_SHIFT (29U)
-/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT29(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT29_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT29_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT30_MASK (0x40000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT30_SHIFT (30U)
-/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT30(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT30_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT30_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT31_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT31_SHIFT (31U)
-/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT31(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT31_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_BIT31_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM0_BLK_NSE_W0_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0 - MBC Memory Block Configuration Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL0_MASK (0x7U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL0_SHIFT (0U)
-/*! MBACSEL0 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE0_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE0_SHIFT (3U)
-/*! NSE0 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL1_MASK (0x70U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL1_SHIFT (4U)
-/*! MBACSEL1 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE1_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE1_SHIFT (7U)
-/*! NSE1 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL2_MASK (0x700U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL2_SHIFT (8U)
-/*! MBACSEL2 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE2_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE2_SHIFT (11U)
-/*! NSE2 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL3_MASK (0x7000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL3_SHIFT (12U)
-/*! MBACSEL3 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE3_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE3_SHIFT (15U)
-/*! NSE3 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL4_MASK (0x70000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL4_SHIFT (16U)
-/*! MBACSEL4 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE4_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE4_SHIFT (19U)
-/*! NSE4 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL5_MASK (0x700000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL5_SHIFT (20U)
-/*! MBACSEL5 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE5_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE5_SHIFT (23U)
-/*! NSE5 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL6_MASK (0x7000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL6_SHIFT (24U)
-/*! MBACSEL6 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE6_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE6_SHIFT (27U)
-/*! NSE6 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL7_MASK (0x70000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL7_SHIFT (28U)
-/*! MBACSEL7 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_MBACSEL7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE7_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE7_SHIFT (31U)
-/*! NSE7 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_NSE7_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_CFG_W0_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0 - MBC Memory Block NonSecure Enable Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT0_MASK (0x1U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT0_SHIFT (0U)
-/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT1_MASK (0x2U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT1_SHIFT (1U)
-/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT2_MASK (0x4U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT2_SHIFT (2U)
-/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT3_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT3_SHIFT (3U)
-/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT4_MASK (0x10U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT4_SHIFT (4U)
-/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT5_MASK (0x20U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT5_SHIFT (5U)
-/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT6_MASK (0x40U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT6_SHIFT (6U)
-/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT7_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT7_SHIFT (7U)
-/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT8_MASK (0x100U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT8_SHIFT (8U)
-/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT8(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT8_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT8_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT9_MASK (0x200U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT9_SHIFT (9U)
-/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT9(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT9_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT9_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT10_MASK (0x400U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT10_SHIFT (10U)
-/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT10(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT10_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT10_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT11_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT11_SHIFT (11U)
-/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT11(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT11_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT11_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT12_MASK (0x1000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT12_SHIFT (12U)
-/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT12(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT12_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT12_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT13_MASK (0x2000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT13_SHIFT (13U)
-/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT13(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT13_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT13_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT14_MASK (0x4000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT14_SHIFT (14U)
-/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT14(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT14_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT14_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT15_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT15_SHIFT (15U)
-/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT15(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT15_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT15_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT16_MASK (0x10000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT16_SHIFT (16U)
-/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT16(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT16_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT16_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT17_MASK (0x20000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT17_SHIFT (17U)
-/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT17(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT17_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT17_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT18_MASK (0x40000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT18_SHIFT (18U)
-/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT18(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT18_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT18_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT19_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT19_SHIFT (19U)
-/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT19(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT19_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT19_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT20_MASK (0x100000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT20_SHIFT (20U)
-/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT20(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT20_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT20_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT21_MASK (0x200000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT21_SHIFT (21U)
-/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT21(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT21_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT21_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT22_MASK (0x400000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT22_SHIFT (22U)
-/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT22(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT22_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT22_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT23_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT23_SHIFT (23U)
-/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT23(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT23_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT23_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT24_MASK (0x1000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT24_SHIFT (24U)
-/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT24(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT24_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT24_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT25_MASK (0x2000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT25_SHIFT (25U)
-/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT25(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT25_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT25_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT26_MASK (0x4000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT26_SHIFT (26U)
-/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT26(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT26_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT26_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT27_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT27_SHIFT (27U)
-/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT27(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT27_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT27_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT28_MASK (0x10000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT28_SHIFT (28U)
-/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT28(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT28_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT28_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT29_MASK (0x20000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT29_SHIFT (29U)
-/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT29(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT29_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT29_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT30_MASK (0x40000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT30_SHIFT (30U)
-/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT30(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT30_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT30_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT31_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT31_SHIFT (31U)
-/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT31(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT31_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_BIT31_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM1_BLK_NSE_W0_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0 - MBC Memory Block Configuration Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL0_MASK (0x7U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL0_SHIFT (0U)
-/*! MBACSEL0 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE0_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE0_SHIFT (3U)
-/*! NSE0 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL1_MASK (0x70U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL1_SHIFT (4U)
-/*! MBACSEL1 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE1_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE1_SHIFT (7U)
-/*! NSE1 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL2_MASK (0x700U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL2_SHIFT (8U)
-/*! MBACSEL2 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE2_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE2_SHIFT (11U)
-/*! NSE2 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL3_MASK (0x7000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL3_SHIFT (12U)
-/*! MBACSEL3 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE3_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE3_SHIFT (15U)
-/*! NSE3 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL4_MASK (0x70000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL4_SHIFT (16U)
-/*! MBACSEL4 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE4_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE4_SHIFT (19U)
-/*! NSE4 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL5_MASK (0x700000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL5_SHIFT (20U)
-/*! MBACSEL5 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE5_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE5_SHIFT (23U)
-/*! NSE5 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL6_MASK (0x7000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL6_SHIFT (24U)
-/*! MBACSEL6 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE6_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE6_SHIFT (27U)
-/*! NSE6 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL7_MASK (0x70000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL7_SHIFT (28U)
-/*! MBACSEL7 - Memory Block Access Control Select for block B
- *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
- *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
- *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
- *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
- *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
- *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
- *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
- *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_MBACSEL7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE7_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE7_SHIFT (31U)
-/*! NSE7 - NonSecure Enable for block B
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_NSE7_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_CFG_W0_COUNT (1U)
-
-/*! @name MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0 - MBC Memory Block NonSecure Enable Word */
-/*! @{ */
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT0_MASK (0x1U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT0_SHIFT (0U)
-/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT0(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT0_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT0_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT1_MASK (0x2U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT1_SHIFT (1U)
-/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT1(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT1_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT1_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT2_MASK (0x4U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT2_SHIFT (2U)
-/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT2(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT2_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT2_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT3_MASK (0x8U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT3_SHIFT (3U)
-/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT3(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT3_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT3_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT4_MASK (0x10U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT4_SHIFT (4U)
-/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT4(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT4_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT4_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT5_MASK (0x20U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT5_SHIFT (5U)
-/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT5(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT5_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT5_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT6_MASK (0x40U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT6_SHIFT (6U)
-/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT6(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT6_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT6_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT7_MASK (0x80U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT7_SHIFT (7U)
-/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT7(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT7_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT7_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT8_MASK (0x100U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT8_SHIFT (8U)
-/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT8(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT8_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT8_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT9_MASK (0x200U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT9_SHIFT (9U)
-/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT9(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT9_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT9_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT10_MASK (0x400U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT10_SHIFT (10U)
-/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT10(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT10_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT10_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT11_MASK (0x800U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT11_SHIFT (11U)
-/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT11(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT11_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT11_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT12_MASK (0x1000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT12_SHIFT (12U)
-/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT12(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT12_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT12_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT13_MASK (0x2000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT13_SHIFT (13U)
-/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT13(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT13_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT13_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT14_MASK (0x4000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT14_SHIFT (14U)
-/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT14(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT14_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT14_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT15_MASK (0x8000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT15_SHIFT (15U)
-/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT15(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT15_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT15_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT16_MASK (0x10000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT16_SHIFT (16U)
-/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT16(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT16_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT16_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT17_MASK (0x20000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT17_SHIFT (17U)
-/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT17(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT17_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT17_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT18_MASK (0x40000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT18_SHIFT (18U)
-/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT18(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT18_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT18_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT19_MASK (0x80000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT19_SHIFT (19U)
-/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT19(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT19_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT19_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT20_MASK (0x100000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT20_SHIFT (20U)
-/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT20(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT20_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT20_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT21_MASK (0x200000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT21_SHIFT (21U)
-/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT21(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT21_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT21_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT22_MASK (0x400000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT22_SHIFT (22U)
-/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT22(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT22_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT22_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT23_MASK (0x800000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT23_SHIFT (23U)
-/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT23(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT23_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT23_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT24_MASK (0x1000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT24_SHIFT (24U)
-/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT24(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT24_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT24_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT25_MASK (0x2000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT25_SHIFT (25U)
-/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT25(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT25_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT25_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT26_MASK (0x4000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT26_SHIFT (26U)
-/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT26(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT26_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT26_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT27_MASK (0x8000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT27_SHIFT (27U)
-/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT27(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT27_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT27_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT28_MASK (0x10000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT28_SHIFT (28U)
-/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT28(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT28_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT28_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT29_MASK (0x20000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT29_SHIFT (29U)
-/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT29(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT29_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT29_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT30_MASK (0x40000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT30_SHIFT (30U)
-/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT30(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT30_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT30_MASK)
-
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT31_MASK (0x80000000U)
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT31_SHIFT (31U)
-/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
- *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
- *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
- *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
- *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
- */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT31(x) (((uint32_t)(((uint32_t)(x)) << MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT31_SHIFT)) & MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_BIT31_MASK)
-/*! @} */
-
-/* The count of MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0 */
-#define MBC_MBC_DOM0_MBC0_DOM_MEM2_BLK_NSE_W0_COUNT (1U)
-
-
-/*!
- * @}
- */ /* end of group MBC_Register_Masks */
-
-
-/* MBC - Peripheral instance base addresses */
-/** Peripheral MBC0 base address */
-#define MBC0_BASE                                (0x4008E000u)
-/** Peripheral MBC0 base pointer */
-#define MBC0                                     ((MBC_Type *)MBC0_BASE)
-/** Array initializer of MBC peripheral base addresses */
-#define MBC_BASE_ADDRS                           { MBC0_BASE }
-/** Array initializer of MBC peripheral base pointers */
-#define MBC_BASE_PTRS                            { MBC0 }
-
-/*!
- * @}
- */ /* end of group MBC_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
    -- MRCC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
@@ -28622,6 +26585,1891 @@ typedef struct {
 /*!
  * @}
  */ /* end of group SYSCON_Peripheral_Access_Layer */
+
+
+/* ----------------------------------------------------------------------------
+   -- TRDC Peripheral Access Layer
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup TRDC_Peripheral_Access_Layer TRDC Peripheral Access Layer
+ * @{
+ */
+
+/** TRDC - Register Layout Typedef */
+typedef struct {
+  struct {                                         /* offset: 0x0, array step: 0x1CC */
+    __IO uint32_t MBC_MEM_GLBCFG[4];                 /**< MBC Global Configuration Register, array offset: 0x0, array step: index*0x1CC, index2*0x4 */
+    __IO uint32_t MBC_NSE_BLK_INDEX;                 /**< MBC NonSecure Enable Block Index, array offset: 0x10, array step: 0x1CC */
+    __O  uint32_t MBC_NSE_BLK_SET;                   /**< MBC NonSecure Enable Block Set, array offset: 0x14, array step: 0x1CC */
+    __O  uint32_t MBC_NSE_BLK_CLR;                   /**< MBC NonSecure Enable Block Clear, array offset: 0x18, array step: 0x1CC */
+    __O  uint32_t MBC_NSE_BLK_CLR_ALL;               /**< MBC NonSecure Enable Block Clear All, array offset: 0x1C, array step: 0x1CC */
+    __IO uint32_t MBC_MEMN_GLBAC[8];                 /**< MBC Global Access Control, array offset: 0x20, array step: index*0x1CC, index2*0x4 */
+    __IO uint32_t MBC_DOM0_MEM0_BLK_CFG_W[2];        /**< MBC Memory Block Configuration Word, array offset: 0x40, array step: index*0x1CC, index2*0x4 */
+         uint8_t RESERVED_0[248];
+    __IO uint32_t MBC_DOM0_MEM0_BLK_NSE_W[1];        /**< MBC Memory Block NonSecure Enable Word, array offset: 0x140, array step: index*0x1CC, index2*0x4 */
+         uint8_t RESERVED_1[60];
+    __IO uint32_t MBC_DOM0_MEM1_BLK_CFG_W[1];        /**< MBC Memory Block Configuration Word, array offset: 0x180, array step: index*0x1CC, index2*0x4 */
+         uint8_t RESERVED_2[28];
+    __IO uint32_t MBC_DOM0_MEM1_BLK_NSE_W[1];        /**< MBC Memory Block NonSecure Enable Word, array offset: 0x1A0, array step: index*0x1CC, index2*0x4 */
+         uint8_t RESERVED_3[4];
+    __IO uint32_t MBC_DOM0_MEM2_BLK_CFG_W[1];        /**< MBC Memory Block Configuration Word, array offset: 0x1A8, array step: index*0x1CC, index2*0x4 */
+         uint8_t RESERVED_4[28];
+    __IO uint32_t MBC_DOM0_MEM2_BLK_NSE_W[1];        /**< MBC Memory Block NonSecure Enable Word, array offset: 0x1C8, array step: index*0x1CC, index2*0x4 */
+  } MBC_INDEX[1];
+} TRDC_Type;
+
+/* ----------------------------------------------------------------------------
+   -- TRDC Register Masks
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup TRDC_Register_Masks TRDC Register Masks
+ * @{
+ */
+
+/*! @name MBC_INDEX_MBC_MEM_GLBCFG - MBC Global Configuration Register */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_NBLKS_MASK (0x3FFU)
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_NBLKS_SHIFT (0U)
+/*! NBLKS - Number of blocks in this memory */
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_NBLKS(x)   (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEM_GLBCFG_NBLKS_SHIFT)) & TRDC_MBC_INDEX_MBC_MEM_GLBCFG_NBLKS_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_SIZE_LOG2_MASK (0x1F0000U)
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_SIZE_LOG2_SHIFT (16U)
+/*! SIZE_LOG2 - Log2 size per block */
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_SIZE_LOG2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEM_GLBCFG_SIZE_LOG2_SHIFT)) & TRDC_MBC_INDEX_MBC_MEM_GLBCFG_SIZE_LOG2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_CLRE_MASK  (0xC0000000U)
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_CLRE_SHIFT (30U)
+/*! CLRE - Clear Error */
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_CLRE(x)    (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEM_GLBCFG_CLRE_SHIFT)) & TRDC_MBC_INDEX_MBC_MEM_GLBCFG_CLRE_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_MEM_GLBCFG */
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_COUNT      (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_MEM_GLBCFG */
+#define TRDC_MBC_INDEX_MBC_MEM_GLBCFG_COUNT2     (4U)
+
+/*! @name MBC_INDEX_MBC_NSE_BLK_INDEX - MBC NonSecure Enable Block Index */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_WNDX_MASK (0x3CU)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_WNDX_SHIFT (2U)
+/*! WNDX - Word index into the block NSE bitmap. It selects the BLK_NSE_Wn register, where WNDX determines the value of n. */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_WNDX(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_WNDX_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_WNDX_MASK)
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_MEM_SEL_MASK (0xF00U)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_MEM_SEL_SHIFT (8U)
+/*! MEM_SEL - Memory Select */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_MEM_SEL(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_MEM_SEL_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_MEM_SEL_MASK)
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_DID_SEL0_MASK (0x10000U)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_DID_SEL0_SHIFT (16U)
+/*! DID_SEL0 - DID Select
+ *  0b0..No effect.
+ *  0b1..Selects NSE bits for this domain.
+ */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_DID_SEL0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_DID_SEL0_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_DID_SEL0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_AI_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_AI_SHIFT (31U)
+/*! AI - Auto Increment
+ *  0b0..No effect.
+ *  0b1..Add 1 to the WNDX field after the register write.
+ */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_AI(x)   (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_AI_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_AI_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_INDEX_COUNT   (1U)
+
+/*! @name MBC_INDEX_MBC_NSE_BLK_SET - MBC NonSecure Enable Block Set */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_SET_W1SET_MASK (0xFFFFFFFFU)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_SET_W1SET_SHIFT (0U)
+/*! W1SET - Write-1 Set */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_SET_W1SET(x)  (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_SET_W1SET_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_SET_W1SET_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_NSE_BLK_SET */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_SET_COUNT     (1U)
+
+/*! @name MBC_INDEX_MBC_NSE_BLK_CLR - MBC NonSecure Enable Block Clear */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_W1CLR_MASK (0xFFFFFFFFU)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_W1CLR_SHIFT (0U)
+/*! W1CLR - Write-1 Clear */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_W1CLR(x)  (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_W1CLR_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_W1CLR_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_NSE_BLK_CLR */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_COUNT     (1U)
+
+/*! @name MBC_INDEX_MBC_NSE_BLK_CLR_ALL - MBC NonSecure Enable Block Clear All */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_MEMSEL_MASK (0xF00U)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_MEMSEL_SHIFT (8U)
+/*! MEMSEL - Memory Select */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_MEMSEL(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_MEMSEL_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_MEMSEL_MASK)
+
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_DID_SEL0_MASK (0x10000U)
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_DID_SEL0_SHIFT (16U)
+/*! DID_SEL0 - DID Select
+ *  0b0..No effect.
+ *  0b1..Clear all NSE bits for this domain.
+ */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_DID_SEL0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_DID_SEL0_SHIFT)) & TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_DID_SEL0_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL */
+#define TRDC_MBC_INDEX_MBC_NSE_BLK_CLR_ALL_COUNT (1U)
+
+/*! @name MBC_INDEX_MBC_MEMN_GLBAC - MBC Global Access Control */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUX_MASK   (0x1U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUX_SHIFT  (0U)
+/*! NUX - NonsecureUser Execute
+ *  0b0..Execute access is not allowed in Nonsecure User mode.
+ *  0b1..Execute access is allowed in Nonsecure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUX(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUX_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUX_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUW_MASK   (0x2U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUW_SHIFT  (1U)
+/*! NUW - NonsecureUser Write
+ *  0b0..Write access is not allowed in Nonsecure User mode.
+ *  0b1..Write access is allowed in Nonsecure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUW(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUW_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUW_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUR_MASK   (0x4U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUR_SHIFT  (2U)
+/*! NUR - NonsecureUser Read
+ *  0b0..Read access is not allowed in Nonsecure User mode.
+ *  0b1..Read access is allowed in Nonsecure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUR(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUR_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NUR_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPX_MASK   (0x10U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPX_SHIFT  (4U)
+/*! NPX - NonsecurePriv Execute
+ *  0b0..Execute access is not allowed in Nonsecure Privilege mode.
+ *  0b1..Execute access is allowed in Nonsecure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPX(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPX_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPX_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPW_MASK   (0x20U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPW_SHIFT  (5U)
+/*! NPW - NonsecurePriv Write
+ *  0b0..Write access is not allowed in Nonsecure Privilege mode.
+ *  0b1..Write access is allowed in Nonsecure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPW(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPW_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPW_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPR_MASK   (0x40U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPR_SHIFT  (6U)
+/*! NPR - NonsecurePriv Read
+ *  0b0..Read access is not allowed in Nonsecure Privilege mode.
+ *  0b1..Read access is allowed in Nonsecure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPR(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPR_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_NPR_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUX_MASK   (0x100U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUX_SHIFT  (8U)
+/*! SUX - SecureUser Execute
+ *  0b0..Execute access is not allowed in Secure User mode.
+ *  0b1..Execute access is allowed in Secure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUX(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUX_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUX_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUW_MASK   (0x200U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUW_SHIFT  (9U)
+/*! SUW - SecureUser Write
+ *  0b0..Write access is not allowed in Secure User mode.
+ *  0b1..Write access is allowed in Secure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUW(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUW_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUW_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUR_MASK   (0x400U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUR_SHIFT  (10U)
+/*! SUR - SecureUser Read
+ *  0b0..Read access is not allowed in Secure User mode.
+ *  0b1..Read access is allowed in Secure User mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUR(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUR_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SUR_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPX_MASK   (0x1000U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPX_SHIFT  (12U)
+/*! SPX - SecurePriv Execute
+ *  0b0..Execute access is not allowed in Secure Privilege mode.
+ *  0b1..Execute access is allowed in Secure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPX(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPX_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPX_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPW_MASK   (0x2000U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPW_SHIFT  (13U)
+/*! SPW - SecurePriv Write
+ *  0b0..Write access is not allowed in Secure Privilege mode.
+ *  0b1..Write access is allowed in Secure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPW(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPW_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPW_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPR_MASK   (0x4000U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPR_SHIFT  (14U)
+/*! SPR - SecurePriv Read
+ *  0b0..Read access is not allowed in Secure Privilege mode.
+ *  0b1..Read access is allowed in Secure Privilege mode.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPR(x)     (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPR_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_SPR_MASK)
+
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_LK_MASK    (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_LK_SHIFT   (31U)
+/*! LK - LOCK
+ *  0b0..This register is not locked and can be altered.
+ *  0b1..This register is locked and cannot be altered.
+ */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_LK(x)      (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_MEMN_GLBAC_LK_SHIFT)) & TRDC_MBC_INDEX_MBC_MEMN_GLBAC_LK_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_MEMN_GLBAC */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_COUNT      (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_MEMN_GLBAC */
+#define TRDC_MBC_INDEX_MBC_MEMN_GLBAC_COUNT2     (8U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W - MBC Memory Block Configuration Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL0_MASK (0x7U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL0_SHIFT (0U)
+/*! MBACSEL0 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE0_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE0_SHIFT (3U)
+/*! NSE0 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL1_MASK (0x70U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL1_SHIFT (4U)
+/*! MBACSEL1 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE1_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE1_SHIFT (7U)
+/*! NSE1 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL2_MASK (0x700U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL2_SHIFT (8U)
+/*! MBACSEL2 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE2_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE2_SHIFT (11U)
+/*! NSE2 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL3_MASK (0x7000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL3_SHIFT (12U)
+/*! MBACSEL3 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE3_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE3_SHIFT (15U)
+/*! NSE3 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL4_MASK (0x70000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL4_SHIFT (16U)
+/*! MBACSEL4 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE4_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE4_SHIFT (19U)
+/*! NSE4 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL5_MASK (0x700000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL5_SHIFT (20U)
+/*! MBACSEL5 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE5_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE5_SHIFT (23U)
+/*! NSE5 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL6_MASK (0x7000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL6_SHIFT (24U)
+/*! MBACSEL6 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE6_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE6_SHIFT (27U)
+/*! NSE6 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL7_MASK (0x70000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL7_SHIFT (28U)
+/*! MBACSEL7 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_MBACSEL7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE7_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE7_SHIFT (31U)
+/*! NSE7 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_NSE7_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_CFG_W_MBC_DOM0_MEM0_BLK_CFG_W_COUNT2 (2U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W - MBC Memory Block NonSecure Enable Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT0_MASK (0x1U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT0_SHIFT (0U)
+/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT1_MASK (0x2U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT1_SHIFT (1U)
+/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT2_MASK (0x4U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT2_SHIFT (2U)
+/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT3_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT3_SHIFT (3U)
+/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT4_MASK (0x10U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT4_SHIFT (4U)
+/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT5_MASK (0x20U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT5_SHIFT (5U)
+/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT6_MASK (0x40U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT6_SHIFT (6U)
+/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT7_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT7_SHIFT (7U)
+/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT8_MASK (0x100U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT8_SHIFT (8U)
+/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT8(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT8_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT8_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT9_MASK (0x200U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT9_SHIFT (9U)
+/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT9(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT9_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT9_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT10_MASK (0x400U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT10_SHIFT (10U)
+/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT10(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT10_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT10_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT11_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT11_SHIFT (11U)
+/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT11(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT11_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT11_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT12_MASK (0x1000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT12_SHIFT (12U)
+/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT12(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT12_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT12_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT13_MASK (0x2000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT13_SHIFT (13U)
+/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT13(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT13_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT13_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT14_MASK (0x4000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT14_SHIFT (14U)
+/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT14(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT14_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT14_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT15_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT15_SHIFT (15U)
+/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT15(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT15_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT15_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT16_MASK (0x10000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT16_SHIFT (16U)
+/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT16(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT16_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT16_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT17_MASK (0x20000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT17_SHIFT (17U)
+/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT17(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT17_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT17_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT18_MASK (0x40000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT18_SHIFT (18U)
+/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT18(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT18_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT18_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT19_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT19_SHIFT (19U)
+/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT19(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT19_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT19_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT20_MASK (0x100000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT20_SHIFT (20U)
+/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT20(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT20_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT20_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT21_MASK (0x200000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT21_SHIFT (21U)
+/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT21(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT21_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT21_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT22_MASK (0x400000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT22_SHIFT (22U)
+/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT22(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT22_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT22_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT23_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT23_SHIFT (23U)
+/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT23(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT23_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT23_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT24_MASK (0x1000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT24_SHIFT (24U)
+/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT24(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT24_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT24_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT25_MASK (0x2000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT25_SHIFT (25U)
+/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT25(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT25_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT25_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT26_MASK (0x4000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT26_SHIFT (26U)
+/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT26(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT26_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT26_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT27_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT27_SHIFT (27U)
+/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT27(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT27_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT27_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT28_MASK (0x10000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT28_SHIFT (28U)
+/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT28(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT28_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT28_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT29_MASK (0x20000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT29_SHIFT (29U)
+/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT29(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT29_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT29_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT30_MASK (0x40000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT30_SHIFT (30U)
+/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT30(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT30_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT30_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT31_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT31_SHIFT (31U)
+/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT31(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT31_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_BIT31_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM0_BLK_NSE_W_MBC_DOM0_MEM0_BLK_NSE_W_COUNT2 (1U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W - MBC Memory Block Configuration Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL0_MASK (0x7U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL0_SHIFT (0U)
+/*! MBACSEL0 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE0_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE0_SHIFT (3U)
+/*! NSE0 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL1_MASK (0x70U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL1_SHIFT (4U)
+/*! MBACSEL1 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE1_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE1_SHIFT (7U)
+/*! NSE1 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL2_MASK (0x700U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL2_SHIFT (8U)
+/*! MBACSEL2 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE2_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE2_SHIFT (11U)
+/*! NSE2 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL3_MASK (0x7000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL3_SHIFT (12U)
+/*! MBACSEL3 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE3_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE3_SHIFT (15U)
+/*! NSE3 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL4_MASK (0x70000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL4_SHIFT (16U)
+/*! MBACSEL4 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE4_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE4_SHIFT (19U)
+/*! NSE4 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL5_MASK (0x700000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL5_SHIFT (20U)
+/*! MBACSEL5 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE5_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE5_SHIFT (23U)
+/*! NSE5 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL6_MASK (0x7000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL6_SHIFT (24U)
+/*! MBACSEL6 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE6_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE6_SHIFT (27U)
+/*! NSE6 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL7_MASK (0x70000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL7_SHIFT (28U)
+/*! MBACSEL7 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_MBACSEL7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE7_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE7_SHIFT (31U)
+/*! NSE7 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_NSE7_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_CFG_W_MBC_DOM0_MEM1_BLK_CFG_W_COUNT2 (1U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W - MBC Memory Block NonSecure Enable Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT0_MASK (0x1U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT0_SHIFT (0U)
+/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT1_MASK (0x2U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT1_SHIFT (1U)
+/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT2_MASK (0x4U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT2_SHIFT (2U)
+/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT3_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT3_SHIFT (3U)
+/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT4_MASK (0x10U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT4_SHIFT (4U)
+/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT5_MASK (0x20U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT5_SHIFT (5U)
+/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT6_MASK (0x40U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT6_SHIFT (6U)
+/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT7_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT7_SHIFT (7U)
+/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT8_MASK (0x100U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT8_SHIFT (8U)
+/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT8(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT8_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT8_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT9_MASK (0x200U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT9_SHIFT (9U)
+/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT9(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT9_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT9_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT10_MASK (0x400U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT10_SHIFT (10U)
+/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT10(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT10_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT10_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT11_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT11_SHIFT (11U)
+/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT11(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT11_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT11_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT12_MASK (0x1000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT12_SHIFT (12U)
+/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT12(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT12_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT12_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT13_MASK (0x2000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT13_SHIFT (13U)
+/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT13(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT13_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT13_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT14_MASK (0x4000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT14_SHIFT (14U)
+/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT14(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT14_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT14_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT15_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT15_SHIFT (15U)
+/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT15(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT15_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT15_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT16_MASK (0x10000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT16_SHIFT (16U)
+/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT16(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT16_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT16_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT17_MASK (0x20000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT17_SHIFT (17U)
+/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT17(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT17_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT17_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT18_MASK (0x40000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT18_SHIFT (18U)
+/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT18(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT18_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT18_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT19_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT19_SHIFT (19U)
+/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT19(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT19_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT19_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT20_MASK (0x100000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT20_SHIFT (20U)
+/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT20(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT20_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT20_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT21_MASK (0x200000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT21_SHIFT (21U)
+/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT21(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT21_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT21_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT22_MASK (0x400000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT22_SHIFT (22U)
+/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT22(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT22_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT22_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT23_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT23_SHIFT (23U)
+/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT23(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT23_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT23_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT24_MASK (0x1000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT24_SHIFT (24U)
+/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT24(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT24_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT24_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT25_MASK (0x2000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT25_SHIFT (25U)
+/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT25(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT25_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT25_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT26_MASK (0x4000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT26_SHIFT (26U)
+/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT26(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT26_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT26_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT27_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT27_SHIFT (27U)
+/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT27(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT27_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT27_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT28_MASK (0x10000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT28_SHIFT (28U)
+/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT28(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT28_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT28_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT29_MASK (0x20000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT29_SHIFT (29U)
+/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT29(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT29_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT29_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT30_MASK (0x40000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT30_SHIFT (30U)
+/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT30(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT30_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT30_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT31_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT31_SHIFT (31U)
+/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT31(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT31_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_BIT31_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM1_BLK_NSE_W_MBC_DOM0_MEM1_BLK_NSE_W_COUNT2 (1U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W - MBC Memory Block Configuration Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL0_MASK (0x7U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL0_SHIFT (0U)
+/*! MBACSEL0 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE0_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE0_SHIFT (3U)
+/*! NSE0 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL1_MASK (0x70U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL1_SHIFT (4U)
+/*! MBACSEL1 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE1_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE1_SHIFT (7U)
+/*! NSE1 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL2_MASK (0x700U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL2_SHIFT (8U)
+/*! MBACSEL2 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE2_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE2_SHIFT (11U)
+/*! NSE2 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL3_MASK (0x7000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL3_SHIFT (12U)
+/*! MBACSEL3 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE3_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE3_SHIFT (15U)
+/*! NSE3 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL4_MASK (0x70000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL4_SHIFT (16U)
+/*! MBACSEL4 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE4_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE4_SHIFT (19U)
+/*! NSE4 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL5_MASK (0x700000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL5_SHIFT (20U)
+/*! MBACSEL5 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE5_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE5_SHIFT (23U)
+/*! NSE5 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL6_MASK (0x7000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL6_SHIFT (24U)
+/*! MBACSEL6 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE6_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE6_SHIFT (27U)
+/*! NSE6 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL7_MASK (0x70000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL7_SHIFT (28U)
+/*! MBACSEL7 - Memory Block Access Control Select for block B
+ *  0b000..select MBC_MEMN_GLBAC0 access control policy for block B
+ *  0b001..select MBC_MEMN_GLBAC1 access control policy for block B
+ *  0b010..select MBC_MEMN_GLBAC2 access control policy for block B
+ *  0b011..select MBC_MEMN_GLBAC3 access control policy for block B
+ *  0b100..select MBC_MEMN_GLBAC4 access control policy for block B
+ *  0b101..select MBC_MEMN_GLBAC5 access control policy for block B
+ *  0b110..select MBC_MEMN_GLBAC6 access control policy for block B
+ *  0b111..select MBC_MEMN_GLBAC7 access control policy for block B
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_MBACSEL7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE7_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE7_SHIFT (31U)
+/*! NSE7 - NonSecure Enable for block B
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in this register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in this register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_NSE7_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_CFG_W_MBC_DOM0_MEM2_BLK_CFG_W_COUNT2 (1U)
+
+/*! @name MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W - MBC Memory Block NonSecure Enable Word */
+/*! @{ */
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT0_MASK (0x1U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT0_SHIFT (0U)
+/*! BIT0 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT0(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT0_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT0_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT1_MASK (0x2U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT1_SHIFT (1U)
+/*! BIT1 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT1(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT1_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT1_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT2_MASK (0x4U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT2_SHIFT (2U)
+/*! BIT2 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT2(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT2_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT2_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT3_MASK (0x8U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT3_SHIFT (3U)
+/*! BIT3 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT3(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT3_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT3_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT4_MASK (0x10U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT4_SHIFT (4U)
+/*! BIT4 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT4(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT4_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT4_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT5_MASK (0x20U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT5_SHIFT (5U)
+/*! BIT5 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT5(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT5_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT5_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT6_MASK (0x40U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT6_SHIFT (6U)
+/*! BIT6 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT6(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT6_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT6_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT7_MASK (0x80U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT7_SHIFT (7U)
+/*! BIT7 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT7(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT7_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT7_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT8_MASK (0x100U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT8_SHIFT (8U)
+/*! BIT8 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT8(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT8_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT8_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT9_MASK (0x200U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT9_SHIFT (9U)
+/*! BIT9 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT9(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT9_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT9_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT10_MASK (0x400U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT10_SHIFT (10U)
+/*! BIT10 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT10(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT10_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT10_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT11_MASK (0x800U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT11_SHIFT (11U)
+/*! BIT11 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT11(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT11_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT11_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT12_MASK (0x1000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT12_SHIFT (12U)
+/*! BIT12 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT12(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT12_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT12_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT13_MASK (0x2000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT13_SHIFT (13U)
+/*! BIT13 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT13(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT13_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT13_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT14_MASK (0x4000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT14_SHIFT (14U)
+/*! BIT14 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT14(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT14_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT14_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT15_MASK (0x8000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT15_SHIFT (15U)
+/*! BIT15 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT15(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT15_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT15_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT16_MASK (0x10000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT16_SHIFT (16U)
+/*! BIT16 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT16(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT16_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT16_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT17_MASK (0x20000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT17_SHIFT (17U)
+/*! BIT17 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT17(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT17_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT17_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT18_MASK (0x40000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT18_SHIFT (18U)
+/*! BIT18 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT18(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT18_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT18_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT19_MASK (0x80000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT19_SHIFT (19U)
+/*! BIT19 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT19(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT19_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT19_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT20_MASK (0x100000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT20_SHIFT (20U)
+/*! BIT20 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT20(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT20_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT20_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT21_MASK (0x200000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT21_SHIFT (21U)
+/*! BIT21 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT21(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT21_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT21_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT22_MASK (0x400000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT22_SHIFT (22U)
+/*! BIT22 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT22(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT22_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT22_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT23_MASK (0x800000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT23_SHIFT (23U)
+/*! BIT23 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT23(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT23_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT23_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT24_MASK (0x1000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT24_SHIFT (24U)
+/*! BIT24 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT24(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT24_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT24_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT25_MASK (0x2000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT25_SHIFT (25U)
+/*! BIT25 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT25(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT25_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT25_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT26_MASK (0x4000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT26_SHIFT (26U)
+/*! BIT26 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT26(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT26_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT26_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT27_MASK (0x8000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT27_SHIFT (27U)
+/*! BIT27 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT27(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT27_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT27_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT28_MASK (0x10000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT28_SHIFT (28U)
+/*! BIT28 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT28(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT28_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT28_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT29_MASK (0x20000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT29_SHIFT (29U)
+/*! BIT29 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT29(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT29_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT29_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT30_MASK (0x40000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT30_SHIFT (30U)
+/*! BIT30 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT30(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT30_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT30_MASK)
+
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT31_MASK (0x80000000U)
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT31_SHIFT (31U)
+/*! BIT31 - Bit b NonSecure Enable [b = 0 - 31]
+ *  0b0..Secure accesses to block B are based on corresponding MBACSEL field in register
+ *       (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]), nonsecure accesses to block B are not allowed.
+ *  0b1..Secure accesses to block B are not allowed, nonsecure accesses to block B are based on corresponding
+ *       MBACSEL field in register (MBCm_DOMd_MEMs_BLK_CFG_Ww[MBACSEL]).
+ */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT31(x) (((uint32_t)(((uint32_t)(x)) << TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT31_SHIFT)) & TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_BIT31_MASK)
+/*! @} */
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_COUNT (1U)
+
+/* The count of TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W */
+#define TRDC_MBC_INDEX_MBC_INDEX_DOM0_MEM2_BLK_NSE_W_MBC_DOM0_MEM2_BLK_NSE_W_COUNT2 (1U)
+
+
+/*!
+ * @}
+ */ /* end of group TRDC_Register_Masks */
+
+
+/* TRDC - Peripheral instance base addresses */
+/** Peripheral MBC0 base address */
+#define MBC0_BASE                                (0x4008E000u)
+/** Peripheral MBC0 base pointer */
+#define MBC0                                     ((TRDC_Type *)MBC0_BASE)
+/** Array initializer of TRDC peripheral base addresses */
+#define TRDC_BASE_ADDRS                          { MBC0_BASE }
+/** Array initializer of TRDC peripheral base pointers */
+#define TRDC_BASE_PTRS                           { MBC0 }
+#define MBC0_MEMORY_CFG_WORD_COUNT {1,2,4,1}
+#define MBC1_MEMORY_CFG_WORD_COUNT {1,1,1,1}
+#define MBC2_MEMORY_CFG_WORD_COUNT {9,6,1,1}
+#define MBC3_MEMORY_CFG_WORD_COUNT {3,0,0,0}
+#define MBC_MEMORY_CFG_WORD_COUNT {MBC0_MEMORY_CFG_WORD_COUNT , MBC1_MEMORY_CFG_WORD_COUNT, MBC2_MEMORY_CFG_WORD_COUNT, MBC3_MEMORY_CFG_WORD_COUNT}
+#define MBC0_MEMORY_NSE_WORD_COUNT {1,1,1,1}
+#define MBC1_MEMORY_NSE_WORD_COUNT {1,1,1,1}
+#define MBC2_MEMORY_NSE_WORD_COUNT {3,2,1,1}
+#define MBC3_MEMORY_NSE_WORD_COUNT {1,0,0,0}
+#define MBC_MEMORY_NSE_WORD_COUNT {MBC0_MEMORY_NSE_WORD_COUNT , MBC1_MEMORY_NSE_WORD_COUNT, MBC2_MEMORY_NSE_WORD_COUNT, MBC3_MEMORY_NSE_WORD_COUNT}
+
+
+/*!
+ * @}
+ */ /* end of group TRDC_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------

@@ -1,13 +1,13 @@
 /*
 ** ###################################################################
 **     Version:             rev. 1.0, 2022-03-29
-**     Build:               b231122
+**     Build:               b240428
 **
 **     Abstract:
 **         Chip specific module features.
 **
 **     Copyright 2016 Freescale Semiconductor, Inc.
-**     Copyright 2016-2023 NXP
+**     Copyright 2016-2024 NXP
 **     SPDX-License-Identifier: BSD-3-Clause
 **
 **     http:                 www.nxp.com
@@ -118,6 +118,8 @@
 #define FSL_FEATURE_LPADC_HAS_CFG_CALOFS (0)
 /* @brief Has offset trim (register OFSTRIM). */
 #define FSL_FEATURE_LPADC_HAS_OFSTRIM (1)
+/* @brief OFSTRIM availability on the SoC. */
+#define FSL_FEATURE_LPADC_OFSTRIM_COUNT (1)
 /* @brief Has Trigger status register. */
 #define FSL_FEATURE_LPADC_HAS_TSTAT (1)
 /* @brief Has power select (bitfield CFG[PWRSEL]). */
@@ -154,8 +156,16 @@
 #define FSL_FEATURE_LPADC_HAS_CFG_HPT_EXDI (1)
 /* @brief Indicate LPADC CFG register TPRICTRL bitfield width. */
 #define FSL_FEATURE_LPADC_CFG_TPRICTRL_BITFIELD_WIDTH (2)
-/* @brief Number of OFSTRIM bitField */
-#define FSL_FEATURE_LPADC_OFSTRIM_COUNT (1)
+/* @brief Has internal temperature sensor. */
+#define FSL_FEATURE_LPADC_HAS_INTERNAL_TEMP_SENSOR (1)
+/* @brief Temperature sensor parameter A (slope). */
+#define FSL_FEATURE_LPADC_TEMP_PARAMETER_A (738.0f)
+/* @brief Temperature sensor parameter B (offset). */
+#define FSL_FEATURE_LPADC_TEMP_PARAMETER_B (287.5f)
+/* @brief Temperature sensor parameter Alpha. */
+#define FSL_FEATURE_LPADC_TEMP_PARAMETER_ALPHA (10.06f)
+/* @brief The buffer size of temperature sensor. */
+#define FSL_FEATURE_LPADC_TEMP_SENS_BUFFER_SIZE (2U)
 
 /* AOI module features */
 
@@ -192,6 +202,8 @@
 #define FSL_FEATURE_LPCMP_HAS_ROUNDROBIN_MODE (1)
 /* @brief Has window mode (related to existence of CCR1.WINDOW_CLS). */
 #define FSL_FEATURE_LPCMP_HAS_WINDOW_CONTROL (1)
+/* @brief Has no CCR0 CMP_STOP_EN bitfield. */
+#define FSL_FEATURE_LPCMP_HAS_NO_CCR0_CMP_STOP_EN (0)
 
 /* CTIMER module features */
 
@@ -222,40 +234,44 @@
 #define FSL_FEATURE_EDMA_HAS_ERROR_IRQ (1)
 /* @brief If 64 bytes transfer supported. */
 #define FSL_FEATURE_EDMA_SUPPORT_64_BYTES_TRANSFER (1)
-/* @brief If channel clock controlled independently */
-#define FSL_FEATURE_EDMA_CHANNEL_HAS_OWN_CLOCK_GATE (1)
+/* @brief whether has prot register */
+#define FSL_FEATURE_EDMA_INSTANCE_HAS_PROT_REGISTERn(x) (0)
 /* @brief If 128 bytes transfer supported. */
 #define FSL_FEATURE_EDMA_SUPPORT_128_BYTES_TRANSFER (1)
-/* @brief Number of channel for each EDMA instance, (only defined for soc with different channel numbers for difference instance) */
-#define FSL_FEATURE_EDMA_INSTANCE_CHANNELn(x) (4)
+/* @brief whether has MP channel mux */
+#define FSL_FEATURE_EDMA_INSTANCE_HAS_MP_CHANNEL_MUXn(x) (0)
 /* @brief If 128 bytes transfer supported. */
 #define FSL_FEATURE_EDMA_INSTANCE_SUPPORT_128_BYTES_TRANSFERn(x) (1)
-/* @brief Has no register bit fields MP_CSR[EBW]. */
-#define FSL_FEATURE_EDMA_HAS_NO_MP_CSR_EBW (1)
+/* @brief If channel clock controlled independently */
+#define FSL_FEATURE_EDMA_CHANNEL_HAS_OWN_CLOCK_GATE (1)
 /* @brief Has register CH_CSR. */
 #define FSL_FEATURE_EDMA_HAS_CHANNEL_CONFIG (1)
-/* @brief If dma has common clock gate */
-#define FSL_FEATURE_EDMA_HAS_COMMON_CLOCK_GATE (0)
+/* @brief Number of channel for each EDMA instance, (only defined for soc with different channel numbers for difference instance) */
+#define FSL_FEATURE_EDMA_INSTANCE_CHANNELn(x) (4)
 /* @brief Has channel mux */
 #define FSL_FEATURE_EDMA_HAS_CHANNEL_MUX (1)
-/* @brief If dma channel IRQ support parameter */
-#define FSL_FEATURE_EDMA_MODULE_CHANNEL_IRQ_ENTRY_SUPPORT_PARAMETER (0)
+/* @brief Has no register bit fields MP_CSR[EBW]. */
+#define FSL_FEATURE_EDMA_HAS_NO_MP_CSR_EBW (1)
 /* @brief Instance has channel mux */
 #define FSL_FEATURE_EDMA_INSTANCE_HAS_CHANNEL_MUXn(x) (1)
-/* @brief NBYTES must be multiple of 8 when using scatter gather. */
-#define FSL_FEATURE_EDMA_HAS_ERRATA_51327 (0)
+/* @brief If dma has common clock gate */
+#define FSL_FEATURE_EDMA_HAS_COMMON_CLOCK_GATE (0)
 /* @brief Has register CH_SBR. */
 #define FSL_FEATURE_EDMA_HAS_SBR (1)
-/* @brief NBYTES must be multiple of 8 when using scatter gather. */
-#define FSL_FEATURE_EDMA_INSTANCE_HAS_ERRATA_51327n(x) (0)
+/* @brief If dma channel IRQ support parameter */
+#define FSL_FEATURE_EDMA_MODULE_CHANNEL_IRQ_ENTRY_SUPPORT_PARAMETER (0)
 /* @brief Has no register bit fields CH_SBR[ATTR]. */
 #define FSL_FEATURE_EDMA_HAS_NO_CH_SBR_ATTR (1)
-/* @brief Has register bit fields MP_CSR[GMRC]. */
-#define FSL_FEATURE_EDMA_HAS_GLOBAL_MASTER_ID_REPLICATION (1)
+/* @brief NBYTES must be multiple of 8 when using scatter gather. */
+#define FSL_FEATURE_EDMA_HAS_ERRATA_51327 (0)
 /* @brief Has register bit field CH_CSR[SWAP]. */
 #define FSL_FEATURE_EDMA_HAS_CHANNEL_SWAP_SIZE (0)
+/* @brief NBYTES must be multiple of 8 when using scatter gather. */
+#define FSL_FEATURE_EDMA_INSTANCE_HAS_ERRATA_51327n(x) (0)
 /* @brief Instance has register bit field CH_CSR[SWAP]. */
 #define FSL_FEATURE_EDMA_INSTANCE_HAS_CHANNEL_SWAP_SIZEn(x) (0)
+/* @brief Has register bit fields MP_CSR[GMRC]. */
+#define FSL_FEATURE_EDMA_HAS_GLOBAL_MASTER_ID_REPLICATION (1)
 /* @brief Has register bit field CH_SBR[INSTR]. */
 #define FSL_FEATURE_EDMA_HAS_CHANNEL_ACCESS_TYPE (0)
 /* @brief Instance has register bit field CH_SBR[INSTR]. */
@@ -278,6 +294,8 @@
 #define FSL_FEATURE_EDMA_INSTANCE_HAS_TRANSFER_MODEn(x) (0)
 /* @brief Has no register bit fields CH_SBR[SEC]. */
 #define FSL_FEATURE_EDMA_HAS_NO_CH_SBR_SEC (1)
+/* @brief edma5 has different tcd type. */
+#define FSL_FEATURE_EDMA_TCD_TYPEn(x) (0)
 
 /* PWM module features */
 
@@ -308,6 +326,11 @@
 /* @brief If (e)FlexPWM has module capture functionality on X channels (inputs). */
 #define FSL_FEATURE_PWM_HAS_CAPTURE_ON_CHANNELX (1)
 
+/* GLIKEY module features */
+
+/* @brief GLIKEY has 8 step FSM configuration */
+#define FSL_FEATURE_GLIKEY_HAS_EIGHT_STEPS (1)
+
 /* GPIO module features */
 
 /* @brief Has GPIO attribute checker register (GACR). */
@@ -333,8 +356,12 @@
 #define FSL_FEATURE_I3C_HAS_NO_SCONFIG_IDRAND (1)
 /* @brief Register SCONFIG has HDROK bitfield. */
 #define FSL_FEATURE_I3C_HAS_HDROK (1)
+/* @brief SOC doesn't support slave IBI/MR/HJ. */
+#define FSL_FEATURE_I3C_HAS_NO_SLAVE_IBI_MR_HJ (0)
 /* @brief Has IBI bytes. */
 #define FSL_FEATURE_I3C_HAS_IBI_PAYLOAD_SIZE_OPTIONAL_BYTE (1)
+/* @brief Has SCL delay after START. */
+#define FSL_FEATURE_I3C_HAS_START_SCL_DELAY (1)
 
 /* LPI2C module features */
 
@@ -351,6 +378,10 @@
 #define FSL_FEATURE_LPSPI_HAS_SEPARATE_DMA_RX_TX_REQn(x) (1)
 /* @brief Has CCR1 (related to existence of registers CCR1). */
 #define FSL_FEATURE_LPSPI_HAS_CCR1 (1)
+/* @brief Has no PCSCFG bit in CFGR1 register */
+#define FSL_FEATURE_LPSPI_HAS_NO_PCSCFG (0)
+/* @brief Has no WIDTH bits in TCR register */
+#define FSL_FEATURE_LPSPI_HAS_NO_MULTI_WIDTH (0)
 
 /* LPTMR module features */
 
@@ -360,8 +391,12 @@
 #define FSL_FEATURE_LPTMR_CNR_WIDTH_IS_32B (1)
 /* @brief Has timer DMA request enable (register bit CSR[TDRE]). */
 #define FSL_FEATURE_LPTMR_HAS_CSR_TDRE (1)
+/* @brief Do not has prescaler clock source 0. */
+#define FSL_FEATURE_LPTMR_HAS_NO_PRESCALER_CLOCK_SOURCE_0_SUPPORT (0)
 /* @brief Do not has prescaler clock source 1. */
 #define FSL_FEATURE_LPTMR_HAS_NO_PRESCALER_CLOCK_SOURCE_1_SUPPORT (0)
+/* @brief Do not has prescaler clock source 2. */
+#define FSL_FEATURE_LPTMR_HAS_NO_PRESCALER_CLOCK_SOURCE_2_SUPPORT (0)
 /* @brief Do not has prescaler clock source 3. */
 #define FSL_FEATURE_LPTMR_HAS_NO_PRESCALER_CLOCK_SOURCE_3_SUPPORT (0)
 
@@ -438,6 +473,25 @@
 /* @brief Has register Timeout. */
 #define FSL_FEATURE_LPUART_HAS_TIMEOUT (0)
 
+/* TRDC module features */
+
+/* @brief Process master count. */
+#define FSL_FEATURE_TRDC_PROCESSOR_MASTER_COUNT (2)
+/* @brief TRDC instance has PID configuration or not. */
+#define FSL_FEATURE_TRDC_INSTANCE_HAS_PID_CONFIGURATIONn(x) (0)
+/* @brief TRDC instance has MBC. */
+#define FSL_FEATURE_TRDC_HAS_MBC (1)
+/* @brief TRDC instance has MRC. */
+#define FSL_FEATURE_TRDC_HAS_MRC (0)
+/* @brief TRDC instance has TRDC_CR. */
+#define FSL_FEATURE_TRDC_HAS_GENERAL_CONFIG (0)
+/* @brief TRDC instance has MDA_Wx_y_DFMT. */
+#define FSL_FEATURE_TRDC_HAS_DOMAIN_ASSIGNMENT (0)
+/* @brief TRDC instance has TRDC_FDID. */
+#define FSL_FEATURE_TRDC_HAS_DOMAIN_ERROR (0)
+/* @brief TRDC instance has TRDC_FLW_CTL. */
+#define FSL_FEATURE_TRDC_HAS_FLW (0)
+
 /* PORT module features */
 
 /* @brief Has control lock (register bit PCR[LK]). */
@@ -468,6 +522,8 @@
 #define FSL_FEATURE_PORT_SUPPORT_DIFFERENT_VOLTAGE_RANGE (1)
 /* @brief Has EFT detect (registers EDFR, EDIER and EDCR). */
 #define FSL_FEATURE_PORT_SUPPORT_EFT (0)
+/* @brief Function 0 is GPIO. */
+#define FSL_FEATURE_PORT_PCR_MUX_GPIO (0)
 /* @brief Has drive strength control (register bit PCR[DSE]). */
 #define FSL_FEATURE_PORT_HAS_DRIVE_STRENGTH (1)
 /* @brief Defines width of PCR[MUX] field. */
@@ -522,6 +578,8 @@
 #define FSL_FEATURE_MCX_SPC_HAS_DPDOWN_PULLDOWN_DISABLE_BIT (0)
 /* @brief Not have glitch detect */
 #define FSL_FEATURE_MCX_SPC_HAS_NO_GLITCH_DETECT (1)
+/* @brief Has BLEED_EN */
+#define FSL_FEATURE_MCX_SPC_HAS_DCDC_CFG_BLEED_EN (0)
 
 /* SYSCON module features */
 
