@@ -51,50 +51,50 @@ This application shows a sample of PCAL9722 basic operation using it register ac
 Basic operation of the PCAL9722 are explained in the code: `source/main.cpp`.  
 
 ```cpp
-#include	"r01lib.h"
-#include	"pcal9722_registers.h"
+#include   "r01lib.h"
+#include   "pcal9722_registers.h"
 ...
-SPI	spi( MOSI_PIN, MISO_PIN, SCLK_PIN, CS_PIN );
+SPI spi( MOSI_PIN, MISO_PIN, SCLK_PIN, CS_PIN );
 
-uint8_t	hardware_reset( bool address_setting );
-void	register_write( uint8_t dev_addr, uint8_t reg_addr, uint8_t value );
-uint8_t	register_read( uint8_t dev_addr, uint8_t reg_addr );
+uint8_t hardware_reset( bool address_setting );
+void    register_write( uint8_t dev_addr, uint8_t reg_addr, uint8_t value );
+uint8_t register_read( uint8_t dev_addr, uint8_t reg_addr );
 
 int main( void )
 {
-	printf( "***** Hello, PCAL9722! *****\r\n" );
+    printf( "***** Hello, PCAL9722! *****\r\n" );
 
-	uint8_t	dev_addr	= hardware_reset( 0 );
+    uint8_t dev_addr    = hardware_reset( 0 );
 
-	register_write( dev_addr, Configuration_port_0, 0x00 );	//	port 0 as output
-	register_write( dev_addr, Configuration_port_1, 0x00 );	//	port 1 as output
-	register_write( dev_addr, Configuration_port_2, 0x3F );	//	port 2 as input
+    register_write( dev_addr, Configuration_port_0, 0x00 );    // port 0 as output
+    register_write( dev_addr, Configuration_port_1, 0x00 );    // port 1 as output
+    register_write( dev_addr, Configuration_port_2, 0x3F );    // port 2 as input
 ...
 ..
 void register_write( uint8_t dev_addr, uint8_t reg_addr, uint8_t value )
 {
-	uint8_t	w_data[ 3 ];
-	uint8_t	r_data[ 3 ];
+    uint8_t w_data[ 3 ];
+    uint8_t r_data[ 3 ];
 
-	w_data[ 0 ]	= dev_addr << 1;
-	w_data[ 1 ]	= reg_addr;
-	w_data[ 2 ]	= value;
+    w_data[ 0 ]    = dev_addr << 1;
+    w_data[ 1 ]    = reg_addr;
+    w_data[ 2 ]    = value;
 
-	spi.write( w_data, r_data, 3 );
+    spi.write( w_data, r_data, 3 );
 }
 
 uint8_t register_read( uint8_t dev_addr, uint8_t reg_addr )
 {
-	uint8_t	w_data[ 3 ];
-	uint8_t	r_data[ 3 ];
+    uint8_t w_data[ 3 ];
+    uint8_t r_data[ 3 ];
 
-	w_data[ 0 ]	= (dev_addr << 1) | 0x1;
-	w_data[ 1 ]	= reg_addr;
-	w_data[ 2 ]	= 0;
+    w_data[ 0 ]    = (dev_addr << 1) | 0x1;
+    w_data[ 1 ]    = reg_addr;
+    w_data[ 2 ]    = 0;
 
-	spi.write( w_data, r_data, 3 );
+    spi.write( w_data, r_data, 3 );
 
-	return r_data[ 2 ];
+    return r_data[ 2 ];
 }
 ```
 
@@ -106,29 +106,29 @@ The PCAL9722 is accessed via `gpio/PCAL9722` class in `r01lib`.
 `source/main.cpp`.  
 
 ```cpp
-#include	"r01lib.h"
-#include	"gpio/PCAL9722.h"
+#include   "r01lib.h"
+#include   "gpio/PCAL9722.h"
 ...
 
-SPI			spi( D11, D12, D13, D10 );
-PCAL9722	gpio( spi );
-InterruptIn	int_pin( D7 );
+SPI            spi( D11, D12, D13, D10 );
+PCAL9722       gpio( spi );
+InterruptIn    int_pin( D7 );
 ...
 ..
 int main( void )
 {
-	printf( "***** Hello, PCAL9722! *****\r\n" );
-	gpio.begin( PCAL9722::ARDUINO_SHIELD );
+    printf( "***** Hello, PCAL9722! *****\r\n" );
+    gpio.begin( PCAL9722::ARDUINO_SHIELD );
 
-	uint8_t io_config_and_pull_up[] = {
-		0x00,	// Configure port0 as OUTPUT
-		0x00,	// Configure port1 as OUTPUT
-		0x3F,	// Configure port2 bit 5~0 as INTPUT
-	};
+    uint8_t io_config_and_pull_up[] = {
+        0x00,  // Configure port0 as OUTPUT
+        0x00,  // Configure port1 as OUTPUT
+        0x3F,  // Configure port2 bit 5~0 as INTPUT
+    };
 
-	gpio.config( io_config_and_pull_up );					//  Port0, 1 and port2 are configured as output
-	gpio.write_port( PULL_UD_EN,  io_config_and_pull_up );	//  Pull-up/down enabled for port2 bit 5~0
-	gpio.write_port( PULL_UD_SEL, io_config_and_pull_up );	//  Pull-up selected for port2 bit 5~0
+    gpio.config( io_config_and_pull_up );                  //  Port0, 1 and port2 are configured as output
+    gpio.write_port( PULL_UD_EN,  io_config_and_pull_up ); //  Pull-up/down enabled for port2 bit 5~0
+    gpio.write_port( PULL_UD_SEL, io_config_and_pull_up ); //  Pull-up selected for port2 bit 5~0
 ...
 ..
 ```
